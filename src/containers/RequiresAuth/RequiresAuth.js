@@ -18,8 +18,8 @@ axios.interceptors.request.use(
 function RequiresAuth(Component) {
   return class Authenticated extends React.Component {
     render() {
-      const token = localStorage.token;
-      return <>{token ? <Component {...this.props} /> :history.replace('/')}</>;
+      const token = localStorage.id_token;
+      return <>{token ? <Component {...this.props} /> : history.replace('/')}</>;
     }
   };
 }
