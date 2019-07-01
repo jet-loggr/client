@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import RequiresAuth from '../RequiresAuth/RequiresAuth';
 
 class Dashboard extends React.Component {
   render() {
@@ -6,4 +7,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default RequiresAuth(Dashboard);
