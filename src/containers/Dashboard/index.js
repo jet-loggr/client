@@ -4,6 +4,7 @@ import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import SideNavigation from "../../components/SideNavigation";
+import requiresAuth from "../RequiresAuth/RequiresAuth";
 
 class Dashboard extends React.Component {
   render() {
@@ -28,7 +29,7 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default requiresAuth(Dashboard);
 
 /**
  *
