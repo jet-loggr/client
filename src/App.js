@@ -3,7 +3,9 @@ import { Route, Switch } from "react-router-dom";
 import Dashboard from "./containers/Dashboard";
 import Callback from "./containers/auth-zero/Callback/Callback";
 import LandingPage from "./containers/LandingPage";
+import ErrorPage from "./containers/ErrorPage";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
+import "./styles/App.scss";
 import { LogBook, EnhancedTable } from "./containers/LogBook/LogBook";
 
 const auth = new Auth();
@@ -38,6 +40,10 @@ function App() {
         <Route
           path="/enhanced-logbook"
           render={props => <EnhancedTable {...props} />}
+        />
+        <Route
+          path="*"
+          render={props => <ErrorPage {...props} auth={auth} />}
         />
       </Switch>
     </div>
