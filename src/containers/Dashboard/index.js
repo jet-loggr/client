@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
-import { LogBook, EnhancedTable } from "../LogBook/LogBook";
+import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import SideNavigation from "../../components/SideNavigation";
+import requiresAuth from "../RequiresAuth/RequiresAuth";
 
 class Dashboard extends React.Component {
   render() {
@@ -15,10 +16,6 @@ class Dashboard extends React.Component {
           <Route
             path="/dashboard/logbook"
             render={props => <LogBook {...props} />}
-          />
-          <Route
-            path="/dashboard/enhanced-logbook"
-            render={props => <EnhancedTable {...props} />}
           />
           {/* <Route path="/dashboard/ac-form" component={} />
           <Route path="/dashboard/flight-form" component={} /> */}
@@ -32,7 +29,7 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default requiresAuth(Dashboard);
 
 /**
  *
