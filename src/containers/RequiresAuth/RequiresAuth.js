@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 import history from "../auth-zero/history";
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 axios.interceptors.request.use(
   options => {
-    options.headers.authorization = localStorage.token;
+    options.headers.authorization = `Bearer ${localStorage.id_token}`;
     return options;
   },
   err => {
@@ -18,10 +18,12 @@ axios.interceptors.request.use(
 function RequiresAuth(Component) {
   return class Authenticated extends React.Component {
     render() {
-      const token = localStorage.token;
-      return <>{token ? <Component {...this.props} /> :history.replace('/')}</>;
+      const token = localStorage.id_token;
+      return (
+        <>{token ? <Component {...this.props} /> : history.replace("/")}</>
+      );
     }
   };
 }
 
-export default RequiresAuth
+export default RequiresAuth;
