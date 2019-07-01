@@ -7,4 +7,5 @@ class Dashboard extends React.Component {
   }
 }
 
-export default RequiresAuth(Dashboard);
+export default Dashboard;
+// export default RequiresAuth(Dashboard);
