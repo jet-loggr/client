@@ -4,6 +4,7 @@
 @import "./libs/mixins";
 
 // components here
+@import "../containers/ErrorPage/styles";
 
 .app {
   display: flex;
