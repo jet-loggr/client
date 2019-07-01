@@ -77,7 +77,7 @@ export default class Auth {
     };
 
     axios
-      .post(`https://lad-network.herokuapp.com/api/auth/register`, user, config)
+      .post(`http://localhost:5000/api/auth/register`, user, config)
       .then(res => {})
       .catch(err => {});
     history.replace("/dashboard");
