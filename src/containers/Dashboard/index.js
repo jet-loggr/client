@@ -12,9 +12,12 @@ class Dashboard extends React.Component {
         <SideNavigation />
         <Switch>
           <Route exact path="/dashboard/" component={DashboardHome} />
-          <Route path="/logbook" render={props => <LogBook {...props} />} />
           <Route
-            path="/enhanced-logbook"
+            path="/dashboard/logbook"
+            render={props => <LogBook {...props} />}
+          />
+          <Route
+            path="/dashboard/enhanced-logbook"
             render={props => <EnhancedTable {...props} />}
           />
           {/* <Route path="/dashboard/ac-form" component={} />
