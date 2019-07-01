@@ -1,0 +1,12 @@
+@import "./libs/reset";
+@import "./libs/global";
+@import "./libs/variables";
+@import "./libs/mixins";
+
+// components here
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
