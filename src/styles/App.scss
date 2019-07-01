@@ -1,0 +1,13 @@
+@import "./libs/reset";
+@import "./libs/global";
+@import "./libs/variables";
+@import "./libs/mixins";
+
+// components here
+@import "../containers/ErrorPage/styles";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
