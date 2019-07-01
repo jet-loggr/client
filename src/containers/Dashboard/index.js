@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 import { LogBook, EnhancedTable } from "../LogBook/LogBook";
-import DashboardHome from "../DashboardHome";
-import SideNavigation from "../SideNavigation";
+import DashboardHome from "../../components/DashboardHome";
+import SideNavigation from "../../components/SideNavigation";
 
 class Dashboard extends React.Component {
   render() {
