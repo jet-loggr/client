@@ -12,6 +12,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import Modal from "@material-ui/core/Modal";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,6 +32,19 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
+  },
+  paper: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(4),
+    outline: "none"
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200
   }
 }));
 
@@ -42,34 +57,128 @@ function getSteps() {
   ];
 }
 
-function getStepContent(step, data) {
+function getStepContent(
+  step,
+  data,
+  formState,
+  handleChange,
+  handleOpen,
+  open,
+  handleClose,
+  classes,
+  addAircraft,
+  addAircraftHandleChanges,
+  addNewAircraft
+) {
   switch (step) {
     case 0:
       return (
         <>
           <FormControl>
-            <InputLabel htmlFor="age-simple">Age</InputLabel>
+            <InputLabel htmlFor="aircraft-simple">Aircraft</InputLabel>
             <Select
-              // value={values.age}
-              // onChange={handleChange}
+              value={formState.aircraft}
+              onChange={handleChange}
               inputProps={{
-                name: "age",
-                id: "age-simple"
+                name: "aircraft",
+                id: "aircraft-simple"
               }}
-              size={2}
+              name="aircraft"
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data.map(item => (
+                <MenuItem value={item.id} key={item.id}>{`${item.make}-${
+                  item.model
+                } ${item.ident}`}</MenuItem>
+              ))}
             </Select>
+            <Button variant="contained" color="primary" onClick={handleOpen}>
+              Add new aircraft
+            </Button>
           </FormControl>
+          <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={open}
+            onClose={handleClose}
+          >
+            <div
+              style={{
+                top: `50%`,
+                left: `50%`,
+                transform: `translate(-50%, -50%)`
+              }}
+              className={classes.paper}
+            >
+              <Typography variant="h6" id="modal-title">
+                Aircraft Form
+              </Typography>
+              <div>
+                <TextField
+                  id="make"
+                  label="Make"
+                  className={classes.textField}
+                  value={addAircraft.make}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="make"
+                />
+                <TextField
+                  id="model"
+                  label="Model"
+                  className={classes.textField}
+                  value={addAircraft.model}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="model"
+                />
+                <TextField
+                  id="ident"
+                  label="Identification"
+                  className={classes.textField}
+                  value={addAircraft.ident}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="ident"
+                />
+                <TextField
+                  id="engine_count"
+                  label="Engine Count"
+                  className={classes.textField}
+                  value={addAircraft.engine_count}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="engine_count"
+                />
+                <TextField
+                  id="engine_type"
+                  label="Engine Type"
+                  className={classes.textField}
+                  value={addAircraft.engine_type}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="engine_type"
+                />
+                <TextField
+                  id="remarks"
+                  label="Remarks"
+                  className={classes.textField}
+                  value={addAircraft.remarks}
+                  onChange={addAircraftHandleChanges}
+                  margin="normal"
+                  name="remarks"
+                  multiline
+                  rows="4"
+                />
+              </div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={addNewAircraft}
+              >
+                Add new aircraft
+              </Button>
+            </div>
+          </Modal>
         </>
       );
     case 1:
@@ -94,6 +203,19 @@ export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const [data, setData] = React.useState([]);
+  const [formState, setFormState] = React.useState({
+    aircraft: ""
+  });
+
+  const [addAircraft, setAddAircraft] = React.useState({
+    make: "",
+    model: "",
+    ident: "",
+    engine_count: "",
+    engine_type: "",
+    remarks: ""
+  });
+  const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     axios
@@ -105,6 +227,13 @@ export default function VerticalLinearStepper() {
         console.error(err);
       });
   }, []);
+
+  const addAircraftHandleChanges = e => {
+    setAddAircraft({
+      ...addAircraft,
+      [e.target.name]: e.target.value
+    });
+  };
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -118,7 +247,44 @@ export default function VerticalLinearStepper() {
     setActiveStep(0);
   }
 
-  console.log(data);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  console.log("HELLOOOOO", data);
+  const handleChange = e => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const addNewAircraft = e => {
+    e.preventDefault();
+    axios
+      .post("/api/aircrafts", addAircraft)
+      .then(() => {
+        axios.get("/api/aircrafts").then(res => {
+          setData(res.data);
+          handleClose();
+          setAddAircraft({
+            make: "",
+            model: "",
+            ident: "",
+            engine_count: "",
+            engine_type: "",
+            remarks: ""
+          });
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
   return (
     <div className={classes.root}>
@@ -127,7 +293,21 @@ export default function VerticalLinearStepper() {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-              <Typography>{getStepContent(index, data)}</Typography>
+              <Typography>
+                {getStepContent(
+                  index,
+                  data,
+                  formState,
+                  handleChange,
+                  handleOpen,
+                  open,
+                  handleClose,
+                  classes,
+                  addAircraft,
+                  addAircraftHandleChanges,
+                  addNewAircraft
+                )}
+              </Typography>
               <div className={classes.actionsContainer}>
                 <div>
                   <Button
@@ -138,6 +318,7 @@ export default function VerticalLinearStepper() {
                     Back
                   </Button>
                   <Button
+                    disabled={!formState.aircraft}
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
