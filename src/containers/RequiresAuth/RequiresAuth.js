@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import history from "../auth-zero/history";
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 axios.interceptors.request.use(
   options => {
