@@ -4,6 +4,7 @@ import Dashboard from "./containers/Dashboard";
 import Callback from "./containers/auth-zero/Callback/Callback";
 import LandingPage from "./containers/LandingPage";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
+import { LogBook, EnhancedTable } from "./containers/LogBook/LogBook";
 
 const auth = new Auth();
 
@@ -32,6 +33,11 @@ function App() {
         <Route
           path="/dashboard"
           render={props => <Dashboard {...props} auth={auth} />}
+        />
+        <Route path="/logbook" render={props => <LogBook {...props} />} />
+        <Route
+          path="/enhanced-logbook"
+          render={props => <EnhancedTable {...props} />}
         />
       </Switch>
     </div>
