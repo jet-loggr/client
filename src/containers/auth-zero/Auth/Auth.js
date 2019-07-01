@@ -76,7 +76,11 @@ export default class Auth {
     };
 
     axios
-      .post(`http://localhost:5000/api/auth/register`, user, config)
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/register`,
+        user,
+        config
+      )
       .then(res => {})
       .catch(err => {});
     history.replace("/dashboard");
