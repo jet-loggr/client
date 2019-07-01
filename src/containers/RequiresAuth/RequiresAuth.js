@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import history from "../auth-zero/history";
 
 axios.defaults.baseURL = '';
 
@@ -19,9 +19,9 @@ function RequiresAuth(Component) {
   return class Authenticated extends React.Component {
     render() {
       const token = localStorage.token;
-      return <>{token ? <Component {...this.props} /> : this.props.history.push('/')}</>;
+      return <>{token ? <Component {...this.props} /> :history.replace('/')}</>;
     }
   };
 }
 
-export default withRouter(RequiresAuth)
+export default RequiresAuth
