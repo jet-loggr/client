@@ -492,7 +492,6 @@ export default function VerticalLinearStepper(props) {
     setOpen(true);
   };
 
-  console.log("HELLOOOOO", data);
   const handleChange = e => {
     setFormState({
       ...formState,
@@ -561,7 +560,7 @@ export default function VerticalLinearStepper(props) {
           hotel: "",
           duty_time: undefined
         });
-        props.history.push("/logbook");
+        props.history.push("/dashboard/logbook");
       })
       .catch(err => {
         console.error(err);
