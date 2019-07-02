@@ -242,13 +242,17 @@ function Dashboard(props) {
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <img
+              src={require("./chevron-left-light.svg")}
+              alt="left"
+              style={{ height: "25px", width: "25px" }}
+            />
           </IconButton>
         </div>
         <Divider />
         <List>{mainListItems}</List>
         <Divider />
-        <List>{secondaryListItems}</List>
+        {/* <List>{secondaryListItems}</List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
