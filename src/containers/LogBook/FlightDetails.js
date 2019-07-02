@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -116,6 +116,15 @@ const FlightDetails = props => {
           autoFocus
         />
         <TextField
+          label="Aircraft Model"
+          name="model"
+          fullWidth
+          value={props.updatedFlight.model}
+          onChange={props.handleUpdateChange}
+          required
+          autoFocus
+        />
+        <TextField
           type="number"
           label="Number of Approaches"
           name="approaches"
@@ -130,15 +139,6 @@ const FlightDetails = props => {
           name="legs"
           fullWidth
           value={props.updatedFlight.legs}
-          onChange={props.handleUpdateChange}
-          required
-          autoFocus
-        />
-        <TextField
-          label="Aircraft Model"
-          name="model"
-          fullWidth
-          value={props.updatedFlight.model}
           onChange={props.handleUpdateChange}
           required
           autoFocus

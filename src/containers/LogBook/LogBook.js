@@ -78,18 +78,13 @@ const LogBook = props => {
       duty_time,
       flight_number,
       hotel,
-      id,
-      ident,
       legs,
-      make,
-      model,
       night_landings,
       pending,
       remarks,
       route_end,
       route_start,
-      trip_number,
-      user_id
+      trip_number
     } = updatedFlight;
     axios
       .put(`/api/flights/${flightId}`, {
@@ -114,7 +109,7 @@ const LogBook = props => {
       })
       .then(res => {
         setUpdating(false);
-        toast.info("Flight updated successfully.");
+        toast.info("Flight info updated successfully.");
         getReq();
       })
       .catch(err => console.error(err));
@@ -130,14 +125,21 @@ const LogBook = props => {
       })
       .then(res => {
         setUpdating(false);
-        toast.info("Aircraft updated successfully.");
+        toast.info("Aircraft info updated successfully.");
         getReq();
       })
       .catch(err => console.error(err));
   };
   const combineUpdates = (flightId, aircraftId) => {
+    const { ident, make, model } = updatedFlight;
     submitFlightUpdate(flightId);
-    submitAircraftUpdate(aircraftId);
+    if (
+      singleFlight.ident !== ident ||
+      singleFlight.make !== make ||
+      singleFlight.model !== model
+    ) {
+      submitAircraftUpdate(aircraftId);
+    }
   };
   const [flights, setFlights] = useState([]);
   const [open, setOpen] = useState(false);
