@@ -38,8 +38,6 @@ const FlightDetails = props => {
     make,
     model
   } = props.flight;
-  console.log("FLIGHT PROP: ", props.flight);
-  console.log("Duration: ", duration);
   return (
     <Dialog
       fullScreen
@@ -63,6 +61,9 @@ const FlightDetails = props => {
             {`Flight ${flight_number} on ${date}.`}
           </Typography>
           <Button color="inherit">Update Info</Button>
+          <Button color="inherit" onClick={props.deleteFlight}>
+            Delete Flight Log
+          </Button>
         </Toolbar>
       </AppBar>
       <DialogContent>
