@@ -77,7 +77,8 @@ const useStyles = makeStyles(theme => ({
     display: "none"
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontWeight: 600
   },
   drawerPaper: {
     position: "relative",
@@ -153,20 +154,28 @@ function Dashboard(props) {
           </IconButton>
           <Typography
             component="h1"
-            variant="h6"
+            variant="h5"
             color="inherit"
             noWrap
             className={classes.title}
           >
-            Dashboard
+            JetLogr
           </Typography>
-          <Link to="/dashboard/flight-form" style={{ color: "unset" }}>
+          <Link
+            to="/dashboard/flight-form"
+            style={{ color: "unset", textDecoration: "none", fontWeight: 800 }}
+          >
+            Add a flight
             <IconButton color="inherit">
               <AddIcon />
             </IconButton>
           </Link>
           <IconButton color="inherit" onClick={() => props.auth.logout()}>
-            <LockIcon />
+            <img
+              src={require("./sign-out-light.svg")}
+              alt="log-out"
+              style={{ height: "25px", width: "25px" }}
+            />
           </IconButton>
         </Toolbar>
       </AppBar>
