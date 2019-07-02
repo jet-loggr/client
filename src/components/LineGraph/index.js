@@ -9,16 +9,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
   React.useEffect(() => {
     axios
       .get("/api/flights/line-graph")
-      .then(res => {
-        console.log(res.data);
-
-        const lineChartData = {};
-        res.data.forEach(day => {
-          lineChartData[day.date] = day.count;
-        });
-
-        setLineChartProps(lineChartData);
-      })
+      .then(res => setLineChartProps(res.data))
       .catch(err => {
         console.error(err);
       });
