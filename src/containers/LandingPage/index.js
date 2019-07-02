@@ -1,14 +1,22 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import LandingHome from "../../components/LandingHome";
+import LandingAbout from "../../components/LandingAbout";
+import LandingNav from "../../components/LandingNav";
 
-const LandingPage = props => {
+const LandingPage = ({ auth }) => {
   const login = () => {
-    props.auth.login();
+    auth.login();
   };
 
   return (
-    <>
-      <button onClick={login}>Login</button>
-    </>
+    <div className="landing-container">
+      <LandingNav login={login} />
+      <div>
+        <Route exact path="/" render={props => <LandingHome {...props} />} />
+        <Route path="/about-us" render={props => <LandingAbout {...props} />} />
+      </div>
+    </div>
   );
 };
 
