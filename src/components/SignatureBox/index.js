@@ -46,7 +46,7 @@ const Signature = props => {
         <Button onClick={saveSignature} color="primary" variant="contained">
           Save
         </Button>
-        <Button onClick={clearSignature} variant="contained">
+        <Button onClick={clearSignature} variant="contained" color="secondary">
           Clear
         </Button>
       </div>
