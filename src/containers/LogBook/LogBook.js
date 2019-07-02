@@ -31,7 +31,7 @@ const LogBook = props => {
     axios
       .get(`/api/flights/${id}`)
       .then(res => {
-        setSingleFlight(res.data[0]);
+        setSingleFlight(res.data);
         setOpen(true);
       })
       .catch(err => console.error(err));
@@ -48,11 +48,12 @@ const LogBook = props => {
             <Link
               onClick={() => viewDetails(item.id)}
               to={"/dashboard/logbook"}
+              style={{ textDecoration: "none" }}
             >
               <DetailsButton />
             </Link>
           ),
-          pending: <input type="checkbox" checked={item.pending} disabled/>
+          pending: <input type="checkbox" checked={item.pending} disabled />
         }));
         setFlights(flightsWithButton);
         setOpen(false);
