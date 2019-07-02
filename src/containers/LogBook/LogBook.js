@@ -62,7 +62,7 @@ const LogBook = props => {
         data={flights}
         columns={columns}
         options={options}
-        onRowsDelete={handleDelete}
+        onRowsDelete={() => console.log('asdfasdfas')}
       />
       <FlightDetails
         open={open}
