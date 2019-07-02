@@ -49,7 +49,8 @@ const LogBook = props => {
             >
               <DetailsButton />
             </Link>
-          )
+          ),
+          pending: <input type="checkbox" disabled/>
         }));
         setFlights(flightsWithButton);
       })
