@@ -1,9 +1,14 @@
-@import "./libs/reset";
-@import "./libs/global";
+// Global
+
 @import "./libs/variables";
 @import "./libs/mixins";
 
-// components here
+// General
+
+@import "./libs/reset";
+@import "./libs/global";
+
+// Component
 @import "../containers/ErrorPage/styles";
 
 .app {
