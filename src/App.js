@@ -6,8 +6,20 @@ import LandingPage from "./containers/LandingPage";
 import ErrorPage from "./containers/ErrorPage";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
 import LogBook from "./containers/LogBook/LogBook";
-
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 import "./styles/App.scss";
+
+const outerTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#35baf6"
+    },
+    secondary: {
+      main: "#2196f3"
+    }
+  }
+});
 
 const auth = new Auth();
 
@@ -20,29 +32,31 @@ const handleAuthentication = ({ location }) => {
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={props => <LandingPage {...props} auth={auth} />}
-        />
-        <Route
-          path="/callback"
-          render={props => {
-            handleAuthentication(props);
-            return <Callback {...props} />;
-          }}
-        />
-        <Route
-          path="/dashboard"
-          render={props => <Dashboard {...props} auth={auth} />}
-        />
-        <Route path="/logbook" render={props => <LogBook {...props} />} />
-        <Route
-          path="*"
-          render={props => <ErrorPage {...props} auth={auth} />}
-        />
-      </Switch>
+      <ThemeProvider theme={outerTheme}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <LandingPage {...props} auth={auth} />}
+          />
+          <Route
+            path="/callback"
+            render={props => {
+              handleAuthentication(props);
+              return <Callback {...props} />;
+            }}
+          />
+          <Route
+            path="/dashboard"
+            render={props => <Dashboard {...props} auth={auth} />}
+          />
+          <Route path="/logbook" render={props => <LogBook {...props} />} />
+          <Route
+            path="*"
+            render={props => <ErrorPage {...props} auth={auth} />}
+          />
+        </Switch>
+      </ThemeProvider>
     </div>
   );
 }

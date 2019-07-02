@@ -9,14 +9,15 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
+import LinkMU from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import LockIcon from "@material-ui/icons/Lock";
+import AddIcon from "@material-ui/icons/Add";
+
 import { mainListItems, secondaryListItems } from "../../components/ListItems";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
@@ -28,9 +29,9 @@ function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Built with love by "}
-      <Link color="inherit" href="https://jet-loggr.netlify.com/">
+      <LinkMU color="inherit" href="https://jet-loggr.netlify.com/">
         the bunch of hackers
-      </Link>
+      </LinkMU>
       {" team."}
     </Typography>
   );
@@ -119,7 +120,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Dashboard() {
+function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -128,7 +129,6 @@ function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -159,10 +159,13 @@ function Dashboard() {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
+          <Link to="/dashboard/flight-form" style={{ color: "unset" }}>
+            <IconButton color="inherit">
+              <AddIcon />
+            </IconButton>
+          </Link>
+          <IconButton color="inherit" onClick={() => props.auth.logout()}>
+            <LockIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
