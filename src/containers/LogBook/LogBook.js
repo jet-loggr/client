@@ -10,7 +10,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const LogBook = props => {
+const LogBook = () => {
   const columns = [
     { name: "Date", field: "date" },
     { name: "Flight No.", field: "flight_number" },
