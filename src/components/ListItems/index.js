@@ -11,7 +11,7 @@ export const mainListItems = (
       <ListItem button>
         <ListItemIcon>
           <img
-            src={require("./tachometer-alt-fastest-light.svg")}
+            src={require("../../assets/tachometer-alt-fastest-light.svg")}
             alt="dashboard"
             style={{ width: "25px", height: "25px" }}
           />
@@ -26,7 +26,7 @@ export const mainListItems = (
       <ListItem button>
         <ListItemIcon>
           <img
-            src={require("./books-light.svg")}
+            src={require("../../assets/books-light.svg")}
             alt="logbook"
             style={{ width: "25px", height: "25px" }}
           />
@@ -41,7 +41,7 @@ export const mainListItems = (
       <ListItem button>
         <ListItemIcon>
           <img
-            src={require("./user-light.svg")}
+            src={require("../../assets/user-light.svg")}
             alt="logbook"
             style={{ width: "25px", height: "25px" }}
           />
@@ -56,7 +56,7 @@ export const mainListItems = (
       <ListItem button>
         <ListItemIcon>
           <img
-            src={require("./cog-light.svg")}
+            src={require("../../assets/cog-light.svg")}
             alt="logbook"
             style={{ width: "25px", height: "25px" }}
           />
@@ -73,7 +73,7 @@ export const secondaryListItems = (
     <ListItem button>
       <ListItemIcon>
         <img
-          src={require("./clipboard-list-light.svg")}
+          src={require("../../assets/clipboard-list-light.svg")}
           alt="logbook"
           style={{ width: "25px", height: "25px" }}
         />
@@ -83,7 +83,7 @@ export const secondaryListItems = (
     <ListItem button>
       <ListItemIcon>
         <img
-          src={require("./clipboard-list-light.svg")}
+          src={require("../../assets/clipboard-list-light.svg")}
           alt="logbook"
           style={{ width: "25px", height: "25px" }}
         />
@@ -93,7 +93,7 @@ export const secondaryListItems = (
     <ListItem button>
       <ListItemIcon>
         <img
-          src={require("./clipboard-list-light.svg")}
+          src={require("../../assets/clipboard-list-light.svg")}
           alt="logbook"
           style={{ width: "25px", height: "25px" }}
         />
