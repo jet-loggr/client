@@ -31,7 +31,7 @@ const LogBook = props => {
     axios
       .get(`/api/flights/${id}`)
       .then(res => {
-        setSingleFlight(res.data[0]);
+        setSingleFlight(res.data);
         setOpen(true);
       })
       .catch(err => console.error(err));
