@@ -10,26 +10,28 @@ import requiresAuth from "../RequiresAuth/RequiresAuth";
 class Dashboard extends React.Component {
   render() {
     return (
-      <>
+      <div className="dashboard">
         <SideNavigation />
-        <Switch>
-          <Route exact path="/dashboard/" component={DashboardHome} />
-          <Route
-            path="/dashboard/logbook"
-            render={props => <LogBook {...props} />}
-          />
-          {/* <Route
+        <div className="main-content">
+          <Switch>
+            <Route exact path="/dashboard/" component={DashboardHome} />
+            <Route
+              path="/dashboard/logbook"
+              render={props => <LogBook {...props} />}
+            />
+            {/* <Route
             path="/dashboard/enhanced-logbook"
             render={props => <EnhancedTable {...props} />}
           /> */}
-          {/* <Route path="/dashboard/ac-form" component={} /> */}
-          <Route path="/dashboard/flight-form" component={FlightForm} />
-          <Route
-            path="/dashboard/*"
-            render={props => <ErrorPage {...props} />}
-          />
-        </Switch>
-      </>
+            {/* <Route path="/dashboard/ac-form" component={} /> */}
+            <Route path="/dashboard/flight-form" component={FlightForm} />
+            <Route
+              path="/dashboard/*"
+              render={props => <ErrorPage {...props} />}
+            />
+          </Switch>
+        </div>
+      </div>
     );
   }
 }

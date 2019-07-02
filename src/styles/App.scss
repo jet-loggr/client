@@ -1,10 +1,17 @@
-@import "./libs/reset";
-@import "./libs/global";
+// Global
 @import "./libs/variables";
 @import "./libs/mixins";
 
-// components here
+// General
+
+@import "./libs/reset";
+@import "./libs/global";
+
+// Component
+
 @import "../containers/ErrorPage/styles";
+@import "../components/SideNavigation/side-nav";
+@import "../containers/Dashboard/dashboard";
 
 .app {
   display: flex;
