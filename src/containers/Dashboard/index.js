@@ -194,7 +194,11 @@ function Dashboard(props) {
           >
             Add a flight
             <IconButton color="inherit">
-              <AddIcon />
+              <img
+                src={require("./plus-circle-light.svg")}
+                alt="log-out"
+                style={{ height: "25px", width: "25px" }}
+              />
             </IconButton>
           </Link>
           <IconButton color="inherit" onClick={handleOpen}>
