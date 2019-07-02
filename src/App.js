@@ -7,7 +7,6 @@ import Callback from "./containers/auth-zero/Callback/Callback";
 import LandingPage from "./containers/LandingPage";
 import ErrorPage from "./containers/ErrorPage";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
-import LogBook from "./containers/LogBook/LogBook";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import "./styles/App.scss";

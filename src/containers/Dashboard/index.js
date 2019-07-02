@@ -11,14 +11,11 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 import LinkMU from "@material-ui/core/Link";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { mainListItems, secondaryListItems } from "../../components/ListItems";
+import { mainListItems } from "../../components/ListItems";
 import { Route, Switch, Link } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
@@ -174,7 +171,7 @@ function Dashboard(props) {
             )}
           >
             <img
-              src={require("./bars-light.svg")}
+              src={require("../../assets/bars-light.svg")}
               alt="hamburger menu"
               style={{ width: "25px", height: "25px" }}
             />
@@ -195,7 +192,7 @@ function Dashboard(props) {
             Add a flight
             <IconButton color="inherit">
               <img
-                src={require("./plus-circle-light.svg")}
+                src={require("../../assets/plus-circle-light.svg")}
                 alt="log-out"
                 style={{ height: "25px", width: "25px" }}
               />
@@ -203,7 +200,7 @@ function Dashboard(props) {
           </Link>
           <IconButton color="inherit" onClick={handleOpen}>
             <img
-              src={require("./sign-out-light.svg")}
+              src={require("../../assets/sign-out-light.svg")}
               alt="log-out"
               style={{ height: "25px", width: "25px" }}
             />
@@ -254,7 +251,7 @@ function Dashboard(props) {
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
             <img
-              src={require("./chevron-left-light.svg")}
+              src={require("../../assets/chevron-left-light.svg")}
               alt="left"
               style={{ height: "25px", width: "25px" }}
             />

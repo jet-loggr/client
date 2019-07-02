@@ -29,9 +29,4 @@ const index = ({ login }) => {
           </Link>
           <button className="login-btn">Log In</button>
         </div>
-      </div>
-    </div>
-  );
-};
-
 export default index;
