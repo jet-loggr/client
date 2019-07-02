@@ -22,7 +22,7 @@ import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
-import Profile from '../../components/Profile';
+import Profile from "../../components/Profile";
 
 function MadeWithLove() {
   return (
@@ -184,7 +184,12 @@ function Dashboard(props) {
             noWrap
             className={classes.title}
           >
-            JetLogr
+            <Link
+              to="/dashboard"
+              style={{ textDecoration: "none", color: "unset" }}
+            >
+              JetLogr
+            </Link>
           </Typography>
           <Link
             to="/dashboard/flight-form"
