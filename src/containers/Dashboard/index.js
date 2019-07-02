@@ -15,6 +15,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import LockIcon from "@material-ui/icons/Lock";
 import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
 
 import { mainListItems, secondaryListItems } from "../../components/ListItems";
 import { Route, Switch, Link } from "react-router-dom";
@@ -117,6 +119,15 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto",
     flexDirection: "column"
   },
+
+  paper2: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(4),
+    outline: "none"
+  },
   fixedHeight: {
     height: 240
   }
@@ -130,6 +141,16 @@ function Dashboard(props) {
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleOpen = () => {
+    setOpenModal(true);
   };
 
   return (
@@ -170,7 +191,7 @@ function Dashboard(props) {
               <AddIcon />
             </IconButton>
           </Link>
-          <IconButton color="inherit" onClick={() => props.auth.logout()}>
+          <IconButton color="inherit" onClick={handleOpen}>
             <img
               src={require("./sign-out-light.svg")}
               alt="log-out"
@@ -178,6 +199,38 @@ function Dashboard(props) {
             />
           </IconButton>
         </Toolbar>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={openModal}
+          onClose={handleClose}
+        >
+          <div
+            style={{
+              top: `50%`,
+              left: `50%`,
+              transform: `translate(-50%, -50%)`
+            }}
+            className={classes.paper2}
+          >
+            <Typography variant="h6" id="modal-title">
+              Are you sure you want to log out?
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                props.auth.logout();
+                handleClose();
+              }}
+            >
+              Log out
+            </Button>
+            <Button variant="contained" color="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </div>
+        </Modal>
       </AppBar>
       <Drawer
         variant="permanent"
