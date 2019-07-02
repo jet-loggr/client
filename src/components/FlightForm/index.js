@@ -16,9 +16,14 @@ import TextField from "@material-ui/core/TextField";
 import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+import "./flight.css";
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: "90%"
+  },
+  select: {
+    fontSize: "1.2rem"
   },
   button: {
     marginTop: theme.spacing(1),
@@ -82,6 +87,7 @@ function getStepContent(
           <FormControl>
             <InputLabel htmlFor="aircraft-simple">Aircraft</InputLabel>
             <Select
+              className={classes.select}
               value={formState.aircraft_id}
               onChange={handleChange}
               inputProps={{
@@ -96,7 +102,12 @@ function getStepContent(
                 } ${item.ident}`}</MenuItem>
               ))}
             </Select>
-            <Button variant="contained" color="primary" onClick={handleOpen}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleOpen}
+              style={{ margin: "25px 0" }}
+            >
               Add new aircraft
             </Button>
           </FormControl>
@@ -181,6 +192,13 @@ function getStepContent(
                 onClick={addNewAircraft}
               >
                 Add new aircraft
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClose}
+              >
+                Cancel
               </Button>
             </div>
           </Modal>
@@ -561,7 +579,11 @@ export default function VerticalLinearStepper(props) {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper
+        className="stepContent"
+        activeStep={activeStep}
+        orientation="vertical"
+      >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
