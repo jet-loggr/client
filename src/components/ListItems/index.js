@@ -15,7 +15,11 @@ export const mainListItems = (
     <NavLink to="/dashboard" style={{ textDecoration: "none", color: "unset" }}>
       <ListItem button>
         <ListItemIcon>
-          <DashboardIcon />
+          <img
+            src={require("./tachometer-alt-fastest-light.svg")}
+            alt="dashboard"
+            style={{ width: "25px", height: "25px" }}
+          />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItem>
@@ -26,7 +30,11 @@ export const mainListItems = (
     >
       <ListItem button>
         <ListItemIcon>
-          <BarChartIcon />
+          <img
+            src={require("./books-light.svg")}
+            alt="logbook"
+            style={{ width: "25px", height: "25px" }}
+          />
         </ListItemIcon>
         <ListItemText primary="Logbook" />
       </ListItem>
@@ -37,7 +45,11 @@ export const mainListItems = (
     >
       <ListItem button>
         <ListItemIcon>
-          <PeopleIcon />
+          <img
+            src={require("./user-light.svg")}
+            alt="logbook"
+            style={{ width: "25px", height: "25px" }}
+          />
         </ListItemIcon>
         <ListItemText primary="Profile" />
       </ListItem>
@@ -48,7 +60,11 @@ export const mainListItems = (
     >
       <ListItem button>
         <ListItemIcon>
-          <SettingsIcon />
+          <img
+            src={require("./cog-light.svg")}
+            alt="logbook"
+            style={{ width: "25px", height: "25px" }}
+          />
         </ListItemIcon>
         <ListItemText primary="Settings" />
       </ListItem>
@@ -61,19 +77,31 @@ export const secondaryListItems = (
     <ListSubheader inset>Saved reports</ListSubheader>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <img
+          src={require("./clipboard-list-light.svg")}
+          alt="logbook"
+          style={{ width: "25px", height: "25px" }}
+        />
       </ListItemIcon>
       <ListItemText primary="Current month" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <img
+          src={require("./clipboard-list-light.svg")}
+          alt="logbook"
+          style={{ width: "25px", height: "25px" }}
+        />
       </ListItemIcon>
       <ListItemText primary="Last quarter" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <img
+          src={require("./clipboard-list-light.svg")}
+          alt="logbook"
+          style={{ width: "25px", height: "25px" }}
+        />
       </ListItemIcon>
       <ListItemText primary="Year-end sale" />
     </ListItem>
