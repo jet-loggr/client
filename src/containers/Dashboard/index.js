@@ -21,6 +21,7 @@ import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
+import FlightDetails from "../LogBook/FlightDetails";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
 
 function MadeWithLove() {
