@@ -8,6 +8,7 @@ const index = ({ login }) => {
   const submitHandler = () => {
     login();
   };
+
   return (
     <div className="navigation-container">
       <div className="nav-flex">
@@ -27,6 +28,12 @@ const index = ({ login }) => {
           <Link to="/Careers" className="links">
             Careers
           </Link>
-          <button className="login-btn">Log In</button>
+          <button className="login-btn" onClick={submitHandler}>
+            Log In
+          </button>
         </div>
+      </div>
+    </div>
+  );
+};
 export default index;
