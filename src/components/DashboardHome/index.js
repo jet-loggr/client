@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 
 import PieChart from "../PieChart/index";
+import StatsCards from "../StatsCards";
+
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
@@ -23,6 +25,7 @@ function Index() {
 
   return (
     <div>
+      <StatsCards />
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
