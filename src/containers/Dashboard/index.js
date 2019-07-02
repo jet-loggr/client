@@ -28,9 +28,9 @@ import requiresAuth from "../RequiresAuth/RequiresAuth";
 function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Built with love by "}
+      {"Built with ❤️ by "}
       <LinkMU color="inherit" href="https://jet-loggr.netlify.com/">
-        the bunch of hackers
+        the 'bunch of hackers' 🤓
       </LinkMU>
       {" team."}
     </Typography>
