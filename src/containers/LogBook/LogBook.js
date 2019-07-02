@@ -11,6 +11,7 @@ const columns = [
   { name: "Trip Destination", field: "route_end" },
   { name: "Duration", field: "duration" },
   { name: "Aircraft", field: "aircraft_id" },
+  { name: "Pending", field: "pending" },
   { name: "Flight details", field: "button" }
 ];
 
