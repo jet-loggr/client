@@ -168,7 +168,11 @@ function Dashboard(props) {
               open && classes.menuButtonHidden
             )}
           >
-            <MenuIcon />
+            <img
+              src={require("./hamburger-light.svg")}
+              alt="hamburger menu"
+              style={{ width: "35px", height: "35px" }}
+            />
           </IconButton>
           <Typography
             component="h1"
