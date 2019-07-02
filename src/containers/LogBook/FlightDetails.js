@@ -40,6 +40,11 @@ const FlightDetails = props => {
   } = props.flight;
   console.log("Props updated flight ", props.updatedFlight);
   if (props.updating === true) {
+    const style = {
+      padding: "5px 5px 5px 0px",
+      width: "90%",
+      margin: "10px auto"
+    };
     return (
       <Dialog
         fullScreen
@@ -77,7 +82,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.flight_number}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Flight Origin"
@@ -86,7 +91,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.route_start}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Flight Destination"
@@ -95,7 +100,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.route_end}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Trip Duration"
@@ -104,7 +109,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.duration}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Aircraft Make"
@@ -113,7 +118,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.make}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Aircraft Model"
@@ -122,7 +127,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.model}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           type="number"
@@ -132,7 +137,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.approaches}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Number of Legs"
@@ -141,7 +146,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.legs}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           label="Hotel"
@@ -150,7 +155,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.hotel}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           type="datetime-local"
@@ -160,7 +165,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.duty_on}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
         <TextField
           type="datetime-local"
@@ -170,7 +175,7 @@ const FlightDetails = props => {
           value={props.updatedFlight.duty_off}
           onChange={props.handleUpdateChange}
           required
-          autoFocus
+          style={style}
         />
       </Dialog>
     );
