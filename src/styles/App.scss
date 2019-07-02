@@ -1,5 +1,4 @@
 // Global
-
 @import "./libs/variables";
 @import "./libs/mixins";
 
@@ -10,6 +9,8 @@
 
 // Component
 @import "../containers/ErrorPage/styles";
+@import "../components/SideNavigation/side-nav";
+@import "../containers/Dashboard/dashboard";
 
 .app {
   display: flex;
