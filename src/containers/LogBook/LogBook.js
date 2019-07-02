@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import Moment from "moment";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
@@ -43,7 +42,7 @@ const LogBook = props => {
       .then(res => {
         const flightsWithButton = res.data.map(item => ({
           ...item,
-          date: Moment(item.date).format("MMMM D, YYYY"),
+          date: item.date,
           aircraft_id: `${item.make} ${item.model}`,
           button: (
             <Link
