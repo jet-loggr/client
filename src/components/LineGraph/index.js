@@ -10,9 +10,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
     axios
       .get("/api/flights/line-graph")
       .then(res => setLineChartProps(res.data))
-      .catch(err => {
-        console.error(err);
-      });
+      .catch(err => console.error(err));
   }, []);
 
   if (
@@ -27,7 +25,6 @@ const DailyFlightCountInCurrentWeekChart = props => {
     <LineChart
       {...props.options}
       data={lineChartProps}
-      // messages={{ empty: "No flight data available so far for this week." }}
     />
   );
 };
