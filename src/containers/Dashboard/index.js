@@ -11,14 +11,11 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 import LinkMU from "@material-ui/core/Link";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { mainListItems, secondaryListItems } from "../../components/ListItems";
+import { mainListItems } from "../../components/ListItems";
 import { Route, Switch, Link } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
