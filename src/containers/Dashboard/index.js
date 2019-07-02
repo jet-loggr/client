@@ -41,7 +41,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    width: "100vw"
+    width: "100vw",
+    backgroundColor: "#FAFAFA"
   },
   toolbar: {
     paddingRight: 24 // keep right padding when drawer closed
@@ -192,6 +193,7 @@ function Dashboard(props) {
                 display: "flex",
                 alignItems: "center"
               }}
+              onClick={handleDrawerClose}
             >
               <img
                 src={require("../../assets/planelogo.svg")}
