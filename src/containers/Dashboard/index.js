@@ -186,8 +186,18 @@ function Dashboard(props) {
           >
             <Link
               to="/dashboard"
-              style={{ textDecoration: "none", color: "unset" }}
+              style={{
+                textDecoration: "none",
+                color: "unset",
+                display: "flex",
+                alignItems: "center"
+              }}
             >
+              <img
+                src={require("../../assets/planelogo.svg")}
+                alt="hamburger menu"
+                style={{ width: "25px", height: "25px", marginRight: "5px" }}
+              />{" "}
               JetLogr
             </Link>
           </Typography>
