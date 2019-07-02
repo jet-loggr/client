@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SignatureCanvas from "react-signature-canvas";
 import axios from "axios";

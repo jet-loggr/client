@@ -10,7 +10,6 @@ import People from "@material-ui/icons/People";
 import GridContainer from "../Grid/GridContainer";
 import GridItem from "../Grid/GridItem";
 import NavPills from "../NavPill/NavPills";
-import Parallax from "../Parallax/Parallax.js";
 import Clearfix from "../Clearfix/Clearfix.js";
 
 import profilePageStyle from "../../assets/profilePageStyle";

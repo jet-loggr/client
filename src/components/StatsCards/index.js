@@ -2,13 +2,6 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import clsx from "clsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlaneDeparture,
-  faClock,
-  faPlaneArrival,
-  faTasks
-} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -120,7 +113,7 @@ const StatsCards = () => {
           </div>
           <div className={classes.landings}>
             <span className={classes.cardTextLandings}>
-            {`${statsCards.totalnightlandings || 0} Day `}
+              {`${statsCards.totalnightlandings || 0} Day `}
             </span>
             <span className={classes.cardTextLandings}>
               {`${statsCards.totalnightlandings || 0} Night `}
