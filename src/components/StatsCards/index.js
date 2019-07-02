@@ -77,6 +77,8 @@ const StatsCards = () => {
       .catch(error => console.error(error));
   }, []);
 
+  console.log(statsCards.totaldaylandings);
+
   return (
     <div className={classes.cardContainer}>
       <Paper className={fixedHeightPaper}>
@@ -103,7 +105,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalduration} Hrs
+            {statsCards.totalduration ? statsCards.totalduration : 0} Hrs
           </span>
         </div>
       </Paper>
@@ -118,10 +120,14 @@ const StatsCards = () => {
           </div>
           <div className={classes.landings}>
             <span className={classes.cardTextLandings}>
-              {statsCards.totaldaylandings} Day{" "}
+              {statsCards.totaldaylandings ? statsCards.totaldaylandings : 0}{" "}
+              Day{" "}
             </span>
             <span className={classes.cardTextLandings}>
-              {statsCards.totalnightlandings} Night{" "}
+              {statsCards.totalnightlandings
+                ? statsCards.totalnightlandings
+                : 0}{" "}
+              Night{" "}
             </span>
           </div>
         </div>
