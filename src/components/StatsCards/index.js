@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
   },
   cardContainer: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-around",
+    alignItems: "center"
   },
   card: {
     height: "100px",
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.5
   },
   cardText: {
-    fontSize: "1.8rem"
+    fontSize: "1.2rem"
   },
   landings: {
     display: "flex",
@@ -68,7 +69,11 @@ const StatsCards = () => {
       <Paper className={fixedHeightPaper}>
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
-            <FontAwesomeIcon icon={faPlaneDeparture} size="4x" />
+            <img
+              src={require("../../assets/plane-departure-light.svg")}
+              alt="plane-departure"
+              style={{ height: "45px", width: "45px" }}
+            />
           </div>
           <span className={classes.cardText}>2,100 Flights</span>
         </div>
@@ -76,7 +81,11 @@ const StatsCards = () => {
       <Paper className={fixedHeightPaper}>
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
-            <FontAwesomeIcon icon={faClock} size="4x" />
+            <img
+              src={require("../../assets/stopwatch-light.svg")}
+              alt="plane-departure"
+              style={{ height: "40px", width: "40px" }}
+            />
           </div>
           <span className={classes.cardText}>11,000 Hrs</span>
         </div>
@@ -84,7 +93,11 @@ const StatsCards = () => {
       <Paper className={fixedHeightPaper}>
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
-            <FontAwesomeIcon icon={faPlaneArrival} size="4x" />
+            <img
+              src={require("../../assets/plane-arrival-light.svg")}
+              alt="plane-departure"
+              style={{ height: "45px", width: "45px" }}
+            />
           </div>
           <div className={classes.landings}>
             <span className={classes.cardTextLandings}>500 Day </span>
@@ -95,7 +108,11 @@ const StatsCards = () => {
       <Paper className={fixedHeightPaper}>
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
-            <FontAwesomeIcon icon={faTasks} size="4x" />
+            <img
+              src={require("../../assets/tasks-light.svg")}
+              alt="plane-departure"
+              style={{ height: "40px", width: "40px" }}
+            />
           </div>
           <span className={classes.cardText}>2 Pending</span>
         </div>
