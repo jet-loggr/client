@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import MaterialDatatable from "material-datatable";
-import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
 import Slide from "@material-ui/core/Slide";
 
@@ -11,23 +9,27 @@ import DeleteFlightConfirmation from "./DeleteFlightConfirmation";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-const columns = [
-  { name: "Date", field: "date" },
-  { name: "Flight No.", field: "flight_number" },
-  { name: "Trip Origin", field: "route_start" },
-  { name: "Trip Destination", field: "route_end" },
-  { name: "Duration", field: "duration" },
-  { name: "Aircraft", field: "aircraft_id" },
-  { name: "Pending", field: "pending" },
-  { name: "Flight details", field: "button" }
-];
 
-const options = {
-  filterType: "dropdown",
-  responsive: "scroll",
-  selectableRows: false
-};
 const LogBook = props => {
+  const columns = [
+    { name: "Date", field: "date" },
+    { name: "Flight No.", field: "flight_number" },
+    { name: "Trip Origin", field: "route_start" },
+    { name: "Trip Destination", field: "route_end" },
+    { name: "Duration", field: "duration" },
+    { name: "Aircraft", field: "aircraft_id" },
+    { name: "Pending", field: "pending" }
+  ];
+
+  const options = {
+    filterType: "dropdown",
+    responsive: "scroll",
+    selectableRows: false,
+    onRowClick: (flight, index) => {
+      viewDetails(flight.id);
+    },
+    rowCursorHand: true
+  };
   const viewDetails = id => {
     axios
       .get(`/api/flights/${id}`)
@@ -45,15 +47,6 @@ const LogBook = props => {
           ...item,
           date: item.date,
           aircraft_id: `${item.make} ${item.model}`,
-          button: (
-            <Link
-              onClick={() => viewDetails(item.id)}
-              to={"/dashboard/logbook"}
-              style={{ textDecoration: "none" }}
-            >
-              <DetailsButton />
-            </Link>
-          ),
           pending: <input type="checkbox" checked={item.pending} disabled />
         }));
         setFlights(flightsWithButton);
