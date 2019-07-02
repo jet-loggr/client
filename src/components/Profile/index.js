@@ -139,14 +139,24 @@ function Index(props) {
                           </Button>
                         </div>
                       ) : (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          className={classes.button}
-                          onClick={toggleSignature}
-                        >
-                          Add your signature
-                        </Button>
+                        <div className={classes.signatureContainer}>
+                          {showSignature ? (
+                            <div className={classes.signatureContainer}>
+                              <SignatureBox
+                                setUser={setUser}
+                                setShowSignature={setShowSignature}
+                              />
+                            </div>
+                          ) : null}
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            onClick={toggleSignature}
+                          >
+                            Add your signature
+                          </Button>
+                        </div>
                       )}
                     </>
                   )
