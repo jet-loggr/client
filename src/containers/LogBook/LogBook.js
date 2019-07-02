@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
-
+import FlightDetails from "./FlightDetails";
 const columns = [
   { name: "Date", field: "date" },
   { name: "Flight No.", field: "flight_number" },
@@ -19,23 +19,31 @@ const options = {
   responsive: "scroll"
 };
 const LogBook = props => {
-  const viewDetails = (e, id) => {
-    e.stopPropagation();
-    console.log("FIRING");
-    props.history.push(`/dashboard/logbook/${id}`);
+  const viewDetails = id => {
+    axios
+      .get(`/api/flights/${id}`)
+      .then(res => {
+        setSingleFlight(res.data);
+        setOpen(true);
+      })
+      .catch(err => console.error(err));
   };
   const [flights, setFlights] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [singleFlight, setSingleFlight] = useState({});
   useEffect(() => {
     axios
       .get("/api/flights")
       .then(res => {
-        console.log("Res.data: ", res.data);
         const flightsWithButton = res.data.map(item => ({
           ...item,
           aircraft_id: `${item.make} ${item.model}`,
           button: (
-            <Link to={`/dashboard/logbook/${item.id}`}>
-              <DetailsButton onClick={e => viewDetails(e, item.id)} />
+            <Link
+              onClick={() => viewDetails(item.id)}
+              to={"/dashboard/logbook"}
+            >
+              <DetailsButton />
             </Link>
           )
         }));
@@ -43,13 +51,22 @@ const LogBook = props => {
       })
       .catch(err => console.error(err));
   }, []);
+  console.log("FLIGHTS: ", flights);
   return (
-    <MaterialDatatable
-      title={"Flight Log Book"}
-      data={flights}
-      columns={columns}
-      options={options}
-    />
+    <React.Fragment>
+      <MaterialDatatable
+        title={"Flight Log Book"}
+        data={flights}
+        columns={columns}
+        options={options}
+      />
+      <FlightDetails
+        open={open}
+        handleClose={() => setOpen(false)}
+        handleClickOpen={() => setOpen(true)}
+        flight={singleFlight}
+      />
+    </React.Fragment>
   );
 };
 
