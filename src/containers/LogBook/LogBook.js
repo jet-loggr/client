@@ -23,9 +23,6 @@ const options = {
   responsive: "scroll"
 };
 const LogBook = props => {
-  const handleDelete = e => {
-    console.log('ahhhhhhhh')
-  }
   const viewDetails = id => {
     axios
       .get(`/api/flights/${id}`)
@@ -66,7 +63,7 @@ const LogBook = props => {
         data={flights}
         columns={columns}
         options={options}
-        onRowsDelete={() => console.log('asdfasdfas')}
+        onRowsDelete={() => console.log("asdfasdfas")}
       />
       <FlightDetails
         fullScreen

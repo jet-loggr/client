@@ -13,8 +13,9 @@ import Container from "@material-ui/core/Container";
 import LinkMU from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import LockIcon from "@material-ui/icons/Lock";
 import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
 
 import { mainListItems, secondaryListItems } from "../../components/ListItems";
 import { Route, Switch, Link } from "react-router-dom";
@@ -22,9 +23,7 @@ import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
-import FlightDetails from "../LogBook/FlightDetails";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
-import Signature from "../../components/SignatureBox";
 
 function MadeWithLove() {
   return (
@@ -77,7 +76,8 @@ const useStyles = makeStyles(theme => ({
     display: "none"
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontWeight: 600
   },
   drawerPaper: {
     position: "relative",
@@ -116,6 +116,15 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto",
     flexDirection: "column"
   },
+
+  paper2: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(4),
+    outline: "none"
+  },
   fixedHeight: {
     height: 240
   }
@@ -129,6 +138,16 @@ function Dashboard(props) {
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleOpen = () => {
+    setOpenModal(true);
   };
 
   return (
@@ -153,22 +172,62 @@ function Dashboard(props) {
           </IconButton>
           <Typography
             component="h1"
-            variant="h6"
+            variant="h5"
             color="inherit"
             noWrap
             className={classes.title}
           >
-            Dashboard
+            JetLogr
           </Typography>
-          <Link to="/dashboard/flight-form" style={{ color: "unset" }}>
+          <Link
+            to="/dashboard/flight-form"
+            style={{ color: "unset", textDecoration: "none", fontWeight: 800 }}
+          >
+            Add a flight
             <IconButton color="inherit">
               <AddIcon />
             </IconButton>
           </Link>
-          <IconButton color="inherit" onClick={() => props.auth.logout()}>
-            <LockIcon />
+          <IconButton color="inherit" onClick={handleOpen}>
+            <img
+              src={require("./sign-out-light.svg")}
+              alt="log-out"
+              style={{ height: "25px", width: "25px" }}
+            />
           </IconButton>
         </Toolbar>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={openModal}
+          onClose={handleClose}
+        >
+          <div
+            style={{
+              top: `50%`,
+              left: `50%`,
+              transform: `translate(-50%, -50%)`
+            }}
+            className={classes.paper2}
+          >
+            <Typography variant="h6" id="modal-title">
+              Are you sure you want to log out?
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                props.auth.logout();
+                handleClose();
+              }}
+            >
+              Log out
+            </Button>
+            <Button variant="contained" color="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </div>
+        </Modal>
       </AppBar>
       <Drawer
         variant="permanent"

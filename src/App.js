@@ -13,12 +13,13 @@ import "./styles/App.scss";
 const outerTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#d9d9d9"
+      main: "#3777f7"
     },
     secondary: {
-      main: "#345473"
+      main: "#FFF"
     }
-  }
+  },
+  shadows: ["none"]
 });
 
 const auth = new Auth();

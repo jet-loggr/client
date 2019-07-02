@@ -6,7 +6,6 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -209,7 +208,6 @@ function getStepContent(
               margin="normal"
               type="date"
               name="date"
-              id="date"
             />
             <div>
               {" "}
@@ -358,7 +356,6 @@ function getStepContent(
               type="datetime-local"
               margin="normal"
               name="duty_on"
-              id="duty_on"
             />
 
             <label htmlFor="duty_off">Duty Off</label>
@@ -370,7 +367,6 @@ function getStepContent(
               type="datetime-local"
               margin="normal"
               name="duty_off"
-              id="duty_off"
             />
             <TextField
               id="duty_time"
@@ -480,10 +476,6 @@ export default function VerticalLinearStepper(props) {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
   }
 
-  function handleReset() {
-    setActiveStep(0);
-  }
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -543,7 +535,7 @@ export default function VerticalLinearStepper(props) {
           date: "",
           route_start: "",
           route_end: "",
-      
+
           //step 3 - add flight details
           approaches: undefined,
           legs: undefined,
@@ -552,7 +544,7 @@ export default function VerticalLinearStepper(props) {
           duration: undefined,
           remarks: "",
           deadhead: false,
-      
+
           // step 4 - add trip details
           trip_number: undefined,
           duty_on: "",

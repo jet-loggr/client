@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
@@ -27,16 +24,13 @@ const FlightDetails = props => {
     }
   }));
   const classes = useStyles();
-  const [flight, setFlight] = useState({});
   const {
-    id,
     date,
     duration,
     flight_number,
     hotel,
     duty_off,
     duty_on,
-    duty_time,
     route_start,
     route_end,
     approaches,
@@ -92,6 +86,17 @@ const FlightDetails = props => {
           </ListItem>
           <Divider />
           <ListItem button>
+            <ListItemText
+              primary="Number of Approaches"
+              secondary={`${approaches}`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemText primary="Number of Legs" secondary={`${legs}`} />
+          </ListItem>
+          <Divider />
+          <ListItem button>
             <ListItemText primary="Aircraft Make" secondary={`${make}`} />
           </ListItem>
           <Divider />
@@ -115,12 +120,6 @@ const FlightDetails = props => {
           <Divider />
         </List>
       </DialogContent>
-      {/* <DialogActions>
-        <Button onClick={props.handleClose} color="primary">
-          Back
-        </Button>
-        <Button color="secondary">Update Info</Button>
-      </DialogActions> */}
     </Dialog>
   );
 };
