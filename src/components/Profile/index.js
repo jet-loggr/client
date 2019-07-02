@@ -31,15 +31,22 @@ const useStyles = makeStyles(theme => ({
   },
   signatureImage: {
     width: "200px",
-    height: "auto"
+    height: "auto",
+    margin: 20
   },
   signatureContainer: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 20
   },
   profileCardContainer: {
     display: "flex",
     justifyContent: "space-around"
+  },
+  button: {
+    width: 200
   }
 }));
 
@@ -84,6 +91,7 @@ function Index(props) {
                 <div className={classes.name}>
                   <h3 className={props.classes.title}>{user.name}</h3>
                   <h6>{user.email}</h6>
+                  <h6>{user.nickname}</h6>
                 </div>
               </div>
             </GridItem>
@@ -101,7 +109,47 @@ function Index(props) {
                 {
                   tabButton: "Signature",
                   tabIcon: People,
-                  tabContent: <h1>Signature</h1>
+                  tabContent: (
+                    <>
+                      {user.signature ? (
+                        <div className={classes.signatureContainer}>
+                          {showSignature ? (
+                            <div className={classes.signatureContainer}>
+                              <SignatureBox
+                                setUser={setUser}
+                                setShowSignature={setShowSignature}
+                              />
+                            </div>
+                          ) : (
+                            <div className={classes.signatureContainer}>
+                              <img
+                                className={classes.signatureImage}
+                                src={user.signature}
+                                alt="signature"
+                              />
+                            </div>
+                          )}
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            onClick={toggleSignature}
+                          >
+                            {showSignature ? "Cancel" : "Update Signature"}
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                          onClick={toggleSignature}
+                        >
+                          Add your signature
+                        </Button>
+                      )}
+                    </>
+                  )
                 }
               ]}
             />
@@ -109,42 +157,6 @@ function Index(props) {
           <Clearfix />
         </div>
       </div>
-      {/* <div className={classes.profileCardContainer}>
-        <img src={user.image_url} alt="profile" className={classes.image} />
-
-        <div>
-          <h2>{user.name}</h2>
-          <h3>{user.email}</h3>
-          <h3>{user.nickname}</h3>
-        </div>
-      </div>
-      {user.signature ? (
-        <div className={classes.signatureContainer}>
-          <img
-            className={classes.signatureImage}
-            src={user.signature}
-            alt="signature"
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            onClick={toggleSignature}
-          >
-            Update Signature
-          </Button>
-        </div>
-      ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          onClick={toggleSignature}
-        >
-          Add your signature
-        </Button>
-      )}
-      {showSignature ? <SignatureBox setUser={setUser} /> : null} */}
     </div>
   );
 }
