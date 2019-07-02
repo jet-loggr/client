@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
+import Moment from "moment";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
@@ -40,6 +42,7 @@ const LogBook = props => {
       .then(res => {
         const flightsWithButton = res.data.map(item => ({
           ...item,
+          date: Moment(item.date).format("MMMM D, YYYY"),
           aircraft_id: `${item.make} ${item.model}`,
           button: (
             <Link
@@ -61,7 +64,7 @@ const LogBook = props => {
     axios
       .delete(`/api/flights/${id}`)
       .then(res => {
-        console.log(res);
+        toast.info("Flight successfully deleted.");
         getReq();
       })
       .catch(err => console.error(err));
@@ -80,7 +83,6 @@ const LogBook = props => {
         data={flights}
         columns={columns}
         options={options}
-        onRowsDelete={() => console.log("asdfasdfas")}
       />
       <FlightDetails
         fullScreen
@@ -88,7 +90,6 @@ const LogBook = props => {
         handleClose={() => setOpen(false)}
         handleClickOpen={() => setOpen(true)}
         deleteFlight={() => setDeleteConfirmation(true)}
-        // deleteFlight={() => deleteFlight(singleFlight.id)}
         flight={singleFlight}
         TransitionComponent={Transition}
       />
