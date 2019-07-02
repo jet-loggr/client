@@ -15,11 +15,19 @@ const DailyFlightCountInCurrentWeekChart = props => {
       });
   }, []);
 
+  if (
+    lineChartProps.length === 0 ||
+    lineChartProps === null ||
+    lineChartProps === undefined
+  ) {
+    return <div className="pie-message">No flight data available</div>;
+  }
+
   return (
     <LineChart
       {...props.options}
       data={lineChartProps}
-      messages={{ empty: "No flight data available so far for this week." }}
+      // messages={{ empty: "No flight data available so far for this week." }}
     />
   );
 };

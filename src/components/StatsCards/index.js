@@ -91,7 +91,8 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalflightcount} Flights
+            {statsCards.totalflightcount ? statsCards.totalflightcount : 0}{" "}
+            Flights
           </span>
         </div>
       </Paper>
@@ -142,7 +143,8 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalpendingcount} Pending
+            {statsCards.totalpendingcount ? statsCards.totalpendingcount : 0}{" "}
+            Pending
           </span>
         </div>
       </Paper>
