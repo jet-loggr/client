@@ -13,7 +13,6 @@ import Container from "@material-ui/core/Container";
 import LinkMU from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import LockIcon from "@material-ui/icons/Lock";
 import AddIcon from "@material-ui/icons/Add";
 
 import { mainListItems, secondaryListItems } from "../../components/ListItems";
