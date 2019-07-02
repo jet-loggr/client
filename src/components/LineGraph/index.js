@@ -13,6 +13,14 @@ const DailyFlightCountInCurrentWeekChart = props => {
       .catch(err => console.error(err));
   }, []);
 
+  if (
+    lineChartProps.length === 0 ||
+    lineChartProps === null ||
+    lineChartProps === undefined
+  ) {
+    return <div className="pie-message">No flight data available</div>;
+  }
+
   return (
     <LineChart
       {...props.options}
