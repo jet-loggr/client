@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
@@ -61,7 +62,8 @@ const LogBook = props => {
     axios
       .delete(`/api/flights/${id}`)
       .then(res => {
-        console.log(res);
+        console.log("delete function success");
+        toast.info("Flight successfully deleted.");
         getReq();
       })
       .catch(err => console.error(err));
@@ -88,7 +90,6 @@ const LogBook = props => {
         handleClose={() => setOpen(false)}
         handleClickOpen={() => setOpen(true)}
         deleteFlight={() => setDeleteConfirmation(true)}
-        // deleteFlight={() => deleteFlight(singleFlight.id)}
         flight={singleFlight}
         TransitionComponent={Transition}
       />
