@@ -1,39 +1,40 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import SignatureCanvas from "react-signature-canvas";
+import axios from "axios";
 
-class Signature extends React.Component {
-  state = { trimmedDataURL: null };
+const Signature = props => {
+  const sigCanvas = useRef(null);
 
-  saveSignature = () => {
-    this.setState({
-      trimmedDataURL: this.sigCanvas.getTrimmedCanvas().toDataURL("image/png")
-    });
+  const saveSignature = () => {
+    axios
+      .put("/api/users", {
+        signature: sigCanvas.current.getTrimmedCanvas().toDataURL("image/png")
+      })
+      .then(res => {
+        axios.get("/api/users").then(res => {
+          props.setUser(res.data);
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
-  clearSignature = () => {
-    this.sigCanvas.clear();
+  const clearSignature = () => {
+    sigCanvas.current.clear();
   };
-  render() {
-    return (
-      <>
-        <SignatureCanvas
-          penColor="green"
-          canvasProps={{ width: 500, height: 200, className: "sigCanvas" }}
-          ref={ref => {
-            this.sigCanvas = ref;
-          }}
-        />
-        {this.state.trimmedDataURL ? (
-          <img
-            src={this.state.trimmedDataURL}
-            alt="Your electronic signature."
-          />
-        ) : null}
-        <button onClick={this.saveSignature}>Save</button>
-        <button onClick={this.clearSignature}>Clear</button>
-      </>
-    );
-  }
-}
+
+  return (
+    <>
+      <SignatureCanvas
+        penColor="black"
+        canvasProps={{ width: 500, height: 200, className: "sigCanvas" }}
+        ref={sigCanvas}
+      />
+      <button onClick={saveSignature}>Save</button>
+      <button onClick={clearSignature}>Clear</button>
+    </>
+  );
+};
 
 export default Signature;
