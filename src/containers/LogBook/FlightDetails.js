@@ -38,8 +38,6 @@ const FlightDetails = props => {
     make,
     model
   } = props.flight;
-  console.log("FLIGHT PROP: ", props.flight);
-  console.log("Duration: ", duration);
   return (
     <Dialog
       fullScreen
