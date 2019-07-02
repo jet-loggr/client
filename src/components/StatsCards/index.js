@@ -24,7 +24,10 @@ const useStyles = makeStyles(theme => ({
   cardContainer: {
     display: "flex",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      display: "block"
+    }
   },
   card: {
     height: "100px",
