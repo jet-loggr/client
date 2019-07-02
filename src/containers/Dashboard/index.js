@@ -24,6 +24,7 @@ import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
 import FlightDetails from "../LogBook/FlightDetails";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
+import Signature from "../../components/SignatureBox";
 
 function MadeWithLove() {
   return (
