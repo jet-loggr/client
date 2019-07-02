@@ -62,7 +62,6 @@ const LogBook = props => {
     axios
       .delete(`/api/flights/${id}`)
       .then(res => {
-        console.log("delete function success");
         toast.info("Flight successfully deleted.");
         getReq();
       })
