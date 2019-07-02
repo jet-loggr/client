@@ -14,6 +14,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
+import { Checkbox } from "@material-ui/core";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,6 +47,9 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200
+  },
+  number: {
+    width: "200px"
   }
 }));
 
@@ -68,7 +73,8 @@ function getStepContent(
   classes,
   addAircraft,
   addAircraftHandleChanges,
-  addNewAircraft
+  addNewAircraft,
+  handleCheckbox
 ) {
   switch (step) {
     case 0:
@@ -77,13 +83,13 @@ function getStepContent(
           <FormControl>
             <InputLabel htmlFor="aircraft-simple">Aircraft</InputLabel>
             <Select
-              value={formState.aircraft}
+              value={formState.aircraft_id}
               onChange={handleChange}
               inputProps={{
-                name: "aircraft",
+                name: "aircraft_id",
                 id: "aircraft-simple"
               }}
-              name="aircraft"
+              name="aircraft_id"
             >
               {data.map(item => (
                 <MenuItem value={item.id} key={item.id}>{`${item.make}-${
@@ -182,29 +188,260 @@ function getStepContent(
         </>
       );
     case 1:
-      return "An ad group contains one or more ads which target a shared set of keywords.";
+      return (
+        <>
+          <FormControl>
+            <TextField
+              id="flight-number"
+              label="flight-number"
+              className={classes.textField}
+              value={formState.flight_number}
+              onChange={handleChange}
+              margin="normal"
+              name="flight_number"
+            />
+            <label htmlFor="date">Flight Date</label>
+            <TextField
+              id="date"
+              className={classes.textField}
+              value={formState.date}
+              onChange={handleChange}
+              margin="normal"
+              type="date"
+              name="date"
+              id="date"
+            />
+            <div>
+              {" "}
+              <TextField
+                id="route_start"
+                className={classes.textField}
+                value={formState.route_start}
+                onChange={handleChange}
+                margin="normal"
+                name="route_start"
+                label="Route Start"
+              />
+              <TextField
+                id="route_end"
+                className={classes.textField}
+                value={formState.route_end}
+                onChange={handleChange}
+                margin="normal"
+                name="route_end"
+                label="Route End"
+              />
+            </div>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="primary"
+                  name="pending"
+                  checked={formState.pending}
+                  onChange={e => handleCheckbox(e, "pending")}
+                  value={formState.pending}
+                />
+              }
+              label="Pending"
+            />
+          </FormControl>
+        </>
+      );
     case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
+      return (
+        <>
+          <FormControl>
+            <TextField
+              id="approaches"
+              label="approaches"
+              className={classes.number}
+              type="number"
+              value={formState.approaches}
+              onChange={handleChange}
+              margin="normal"
+              name="approaches"
+            />
+            <TextField
+              id="legs"
+              label="legs"
+              type="number"
+              className={classes.number}
+              value={formState.legs}
+              onChange={handleChange}
+              margin="normal"
+              name="legs"
+            />
+
+            <TextField
+              id="day_landings"
+              label="day_landings"
+              type="number"
+              className={classes.number}
+              value={formState.day_landings}
+              onChange={handleChange}
+              margin="normal"
+              name="day_landings"
+            />
+
+            <TextField
+              id="night_landings"
+              label="night_landings"
+              type="number"
+              className={classes.number}
+              value={formState.night_landings}
+              onChange={handleChange}
+              margin="normal"
+              name="night_landings"
+            />
+
+            <TextField
+              id="duration"
+              label="Duration in hours"
+              type="number"
+              className={classes.number}
+              value={formState.duration}
+              onChange={handleChange}
+              margin="normal"
+              name="duration"
+            />
+            <TextField
+              id="remarks"
+              label="Remarks"
+              className={classes.textField}
+              value={formState.remarks}
+              onChange={handleChange}
+              margin="normal"
+              name="remarks"
+              multiline
+              rows="4"
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="primary"
+                  name="deadhead"
+                  checked={formState.deadhead}
+                  onChange={e => handleCheckbox(e, "deadhead")}
+                  value={formState.pending}
+                />
+              }
+              label="Deadhead"
+            />
+          </FormControl>
+        </>
+      );
     case 3:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
+      return (
+        <>
+          <FormControl>
+            {/*
+    duty_time: ""
+             */}
+            <TextField
+              id="trip_number"
+              label="trip_number"
+              className={classes.number}
+              type="number"
+              value={formState.trip_number}
+              onChange={handleChange}
+              margin="normal"
+              name="trip_number"
+            />
+            <label htmlFor="duty_on">Duty On</label>
+            <TextField
+              id="duty_on"
+              className={classes.textField}
+              value={formState.duty_on}
+              onChange={handleChange}
+              type="datetime-local"
+              margin="normal"
+              name="duty_on"
+              id="duty_on"
+            />
+
+            <label htmlFor="duty_off">Duty Off</label>
+            <TextField
+              id="duty_off"
+              className={classes.textField}
+              value={formState.duty_off}
+              onChange={handleChange}
+              type="datetime-local"
+              margin="normal"
+              name="duty_off"
+              id="duty_off"
+            />
+            <TextField
+              id="duty_time"
+              label="Duty time in hours"
+              type="number"
+              className={classes.number}
+              value={formState.duty_time}
+              onChange={handleChange}
+              margin="normal"
+              name="duty_time"
+            />
+
+            <TextField
+              id="hotel"
+              className={classes.textField}
+              value={formState.hotel}
+              onChange={handleChange}
+              margin="normal"
+              name="hotel"
+              label="Hotel"
+            />
+
+            <TextField
+              id="remarks"
+              label="Remarks"
+              className={classes.textField}
+              value={formState.remarks}
+              onChange={handleChange}
+              margin="normal"
+              name="remarks"
+              multiline
+              rows="4"
+            />
+          </FormControl>
+        </>
+      );
     default:
       return "Unknown step";
   }
 }
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const [data, setData] = React.useState([]);
   const [formState, setFormState] = React.useState({
-    aircraft: ""
+    //step 1 - aircraft -
+    aircraft_id: "",
+    //step 2 - add flight -
+    flight_number: "",
+    pending: true,
+    date: "",
+    route_start: "",
+    route_end: "",
+
+    //step 3 - add flight details
+    approaches: "",
+    legs: "",
+    day_landings: "",
+    night_landings: "",
+    duration: "",
+    remarks: "",
+    deadhead: false,
+
+    // step 4 - add trip details
+    trip_number: "",
+    duty_on: "",
+    duty_off: "",
+    hotel: "",
+    duty_time: ""
   });
 
   const [addAircraft, setAddAircraft] = React.useState({
@@ -263,6 +500,13 @@ export default function VerticalLinearStepper() {
     });
   };
 
+  const handleCheckbox = (e, name) => {
+    setFormState({
+      ...formState,
+      [name]: e.target.checked
+    });
+  };
+
   const addNewAircraft = e => {
     e.preventDefault();
     axios
@@ -280,6 +524,44 @@ export default function VerticalLinearStepper() {
             remarks: ""
           });
         });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
+  const submitFlight = e => {
+    e.preventDefault();
+    axios
+      .post("/api/flights", formState)
+      .then(() => {
+        setFormState({
+          //step 1 - aircraft -
+          aircraft_id: "",
+          //step 2 - add flight -
+          flight_number: "",
+          pending: true,
+          date: "",
+          route_start: "",
+          route_end: "",
+
+          //step 3 - add flight details
+          approaches: "",
+          legs: "",
+          day_landings: "",
+          night_landings: "",
+          duration: "",
+          remarks: "",
+          deadhead: false,
+
+          // step 4 - add trip details
+          trip_number: "",
+          duty_on: "",
+          duty_off: "",
+          hotel: "",
+          duty_time: ""
+        });
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.error(err);
@@ -305,7 +587,8 @@ export default function VerticalLinearStepper() {
                   classes,
                   addAircraft,
                   addAircraftHandleChanges,
-                  addNewAircraft
+                  addNewAircraft,
+                  handleCheckbox
                 )}
               </Typography>
               <div className={classes.actionsContainer}>
@@ -318,10 +601,14 @@ export default function VerticalLinearStepper() {
                     Back
                   </Button>
                   <Button
-                    disabled={!formState.aircraft}
+                    disabled={!formState.aircraft_id}
                     variant="contained"
                     color="primary"
-                    onClick={handleNext}
+                    onClick={
+                      activeStep === steps.length - 1
+                        ? submitFlight
+                        : handleNext
+                    }
                     className={classes.button}
                   >
                     {activeStep === steps.length - 1 ? "Finish" : "Next"}
@@ -332,14 +619,6 @@ export default function VerticalLinearStepper() {
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
-      )}
     </div>
   );
 }
