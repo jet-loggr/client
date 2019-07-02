@@ -24,7 +24,8 @@ const columns = [
 
 const options = {
   filterType: "dropdown",
-  responsive: "scroll"
+  responsive: "scroll",
+  selectableRows: false
 };
 const LogBook = props => {
   const viewDetails = id => {
