@@ -24,7 +24,10 @@ class Signature extends React.Component {
           }}
         />
         {this.state.trimmedDataURL ? (
-          <img src={this.state.trimmedDataURL} />
+          <img
+            src={this.state.trimmedDataURL}
+            alt="Your electronic signature."
+          />
         ) : null}
         <button onClick={this.saveSignature}>Save</button>
         <button onClick={this.clearSignature}>Clear</button>
