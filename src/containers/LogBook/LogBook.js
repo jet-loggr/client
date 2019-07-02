@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import Moment from "moment";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
