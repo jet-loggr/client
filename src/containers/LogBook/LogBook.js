@@ -5,6 +5,8 @@ import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
 import Slide from "@material-ui/core/Slide";
+
+import DeleteFlightConfirmation from "./DeleteFlightConfirmation";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -50,6 +52,7 @@ const LogBook = props => {
         }));
         setFlights(flightsWithButton);
         setOpen(false);
+        setDeleteConfirmation(false);
       })
       .catch(err => console.error(err));
   };
@@ -65,11 +68,11 @@ const LogBook = props => {
   };
   const [flights, setFlights] = useState([]);
   const [open, setOpen] = useState(false);
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [singleFlight, setSingleFlight] = useState({});
   useEffect(() => {
     getReq();
   }, []);
-  console.log("FLIGHTS: ", flights);
   return (
     <React.Fragment>
       <MaterialDatatable
@@ -84,9 +87,17 @@ const LogBook = props => {
         open={open}
         handleClose={() => setOpen(false)}
         handleClickOpen={() => setOpen(true)}
-        deleteFlight={() => deleteFlight(singleFlight.id)}
+        deleteFlight={() => setDeleteConfirmation(true)}
+        // deleteFlight={() => deleteFlight(singleFlight.id)}
         flight={singleFlight}
         TransitionComponent={Transition}
+      />
+      <DeleteFlightConfirmation
+        open={deleteConfirmation}
+        handleClose={() => setDeleteConfirmation(false)}
+        handleClickOpen={() => setDeleteConfirmation(true)}
+        deleteFlight={() => deleteFlight(singleFlight.id)}
+        flight={singleFlight}
       />
     </React.Fragment>
   );
