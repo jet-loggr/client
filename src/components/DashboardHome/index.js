@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import PieChart from "../PieChart/index";
 import StatsCards from "../StatsCards";
+import LineGraph from "../LineGraph";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -29,12 +30,15 @@ function Index() {
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
-          <Paper className={fixedHeightPaper}>CHARTS</Paper>
+          <Paper className={fixedHeightPaper}>
+            <span style={{ marginBottom: "20px" }}>Past Week Flights</span>
+            <LineGraph />
+          </Paper>
         </Grid>
         {/* Recent Deposits */}
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedHeightPaper}>
-            <span style={{ marginBottom: "5px" }}>Aircrafts You've Flown</span>{" "}
+            <span style={{ marginBottom: "20px" }}>Aircrafts You've Flown</span>{" "}
             <PieChart />
           </Paper>
         </Grid>
