@@ -19,6 +19,9 @@ const options = {
   responsive: "scroll"
 };
 const LogBook = props => {
+  const handleDelete = e => {
+    console.log('ahhhhhhhh')
+  }
   const viewDetails = id => {
     axios
       .get(`/api/flights/${id}`)
@@ -59,6 +62,7 @@ const LogBook = props => {
         data={flights}
         columns={columns}
         options={options}
+        onRowsDelete={handleDelete}
       />
       <FlightDetails
         open={open}

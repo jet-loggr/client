@@ -428,27 +428,27 @@ export default function VerticalLinearStepper(props) {
     route_end: "",
 
     //step 3 - add flight details
-    approaches: "",
-    legs: "",
-    day_landings: "",
-    night_landings: "",
-    duration: "",
+    approaches: undefined,
+    legs: undefined,
+    day_landings: undefined,
+    night_landings: undefined,
+    duration: undefined,
     remarks: "",
     deadhead: false,
 
     // step 4 - add trip details
-    trip_number: "",
+    trip_number: undefined,
     duty_on: "",
     duty_off: "",
     hotel: "",
-    duty_time: ""
+    duty_time: undefined
   });
 
   const [addAircraft, setAddAircraft] = React.useState({
     make: "",
     model: "",
     ident: "",
-    engine_count: "",
+    engine_count: undefined,
     engine_type: "",
     remarks: ""
   });
@@ -519,7 +519,7 @@ export default function VerticalLinearStepper(props) {
             make: "",
             model: "",
             ident: "",
-            engine_count: "",
+            engine_count: undefined,
             engine_type: "",
             remarks: ""
           });
@@ -544,24 +544,24 @@ export default function VerticalLinearStepper(props) {
           date: "",
           route_start: "",
           route_end: "",
-
+      
           //step 3 - add flight details
-          approaches: "",
-          legs: "",
-          day_landings: "",
-          night_landings: "",
-          duration: "",
+          approaches: undefined,
+          legs: undefined,
+          day_landings: undefined,
+          night_landings: undefined,
+          duration: undefined,
           remarks: "",
           deadhead: false,
-
+      
           // step 4 - add trip details
-          trip_number: "",
+          trip_number: undefined,
           duty_on: "",
           duty_off: "",
           hotel: "",
-          duty_time: ""
+          duty_time: undefined
         });
-        props.history.push("/dashboard");
+        props.history.push("/logbook");
       })
       .catch(err => {
         console.error(err);
