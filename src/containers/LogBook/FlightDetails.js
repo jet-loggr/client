@@ -38,7 +38,6 @@ const FlightDetails = props => {
     make,
     model
   } = props.flight;
-  console.log("Props updated flight ", props.updatedFlight);
   if (props.updating === true) {
     const style = {
       padding: "5px 5px 5px 0px",
@@ -205,7 +204,12 @@ const FlightDetails = props => {
             <Button color="inherit" onClick={props.setUpdating}>
               Update Info
             </Button>
-            <Button color="inherit" onClick={props.deleteFlight}>
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginLeft: "10px" }}
+              onClick={props.deleteFlight}
+            >
               Delete Flight Log
             </Button>
           </Toolbar>

@@ -17,7 +17,7 @@ const outerTheme = createMuiTheme({
       main: "#3777f7"
     },
     secondary: {
-      main: "#FFF"
+      main: "#e91e63"
     }
   },
   shadows: ["none"]

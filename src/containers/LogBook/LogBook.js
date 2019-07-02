@@ -116,7 +116,6 @@ const LogBook = () => {
   };
   const submitAircraftUpdate = aircraftId => {
     const { ident, make, model } = updatedFlight;
-    console.log("OBJ: ", { ident, make, model });
     axios
       .put(`/api/aircrafts/${aircraftId}`, {
         ident,
