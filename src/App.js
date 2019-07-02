@@ -53,7 +53,6 @@ function App() {
             path="/dashboard"
             render={props => <Dashboard {...props} auth={auth} />}
           />
-          <Route path="/logbook" render={props => <LogBook {...props} />} />
           <Route
             path="*"
             render={props => <ErrorPage {...props} auth={auth} />}
