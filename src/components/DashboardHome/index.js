@@ -33,7 +33,7 @@ function Index() {
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <Paper className={classes.paper}>NAD SOMETHING ELSE</Paper>
+          <Paper className={classes.paper}>AND SOMETHING ELSE</Paper>
         </Grid>
       </Grid>
     </div>
