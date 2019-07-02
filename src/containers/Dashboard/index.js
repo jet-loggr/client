@@ -13,7 +13,6 @@ import Container from "@material-ui/core/Container";
 import LinkMU from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import LockIcon from "@material-ui/icons/Lock";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
@@ -24,9 +23,7 @@ import ErrorPage from "../ErrorPage";
 import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
-import FlightDetails from "../LogBook/FlightDetails";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
-import Signature from "../../components/SignatureBox";
 
 function MadeWithLove() {
   return (

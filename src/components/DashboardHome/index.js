@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 
+import PieChart from "../PieChart/index";
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
@@ -29,7 +30,10 @@ function Index() {
         </Grid>
         {/* Recent Deposits */}
         <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>MORE CHARTS</Paper>
+          <Paper className={fixedHeightPaper}>
+            <span style={{ marginBottom: "5px" }}>Aircrafts You've Flown</span>{" "}
+            <PieChart />
+          </Paper>
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
