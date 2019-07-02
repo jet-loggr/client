@@ -7,7 +7,7 @@ const index = ({ login }) => {
   return (
     <div className="nav-container">
       <div className="logo-container">
-        <img src={require("./plane-departure-solid.svg")} alt="" />
+        <img src={require("../../assets/plane-departure-solid.svg")} alt="" />
         <h1>Jet Logr</h1>
       </div>
       <div className="menu">
