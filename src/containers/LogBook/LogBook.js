@@ -42,7 +42,7 @@ const LogBook = props => {
       .then(res => {
         const flightsWithButton = res.data.map(item => ({
           ...item,
-          date: Moment(item.date).format("MMMM D, YYYY"),
+          date: item.date,
           aircraft_id: `${item.make} ${item.model}`,
           button: (
             <Link
