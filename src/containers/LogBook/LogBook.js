@@ -50,7 +50,7 @@ const LogBook = props => {
               <DetailsButton />
             </Link>
           ),
-          pending: <input type="checkbox" disabled/>
+          pending: <input type="checkbox" checked={item.pending} disabled/>
         }));
         setFlights(flightsWithButton);
       })
