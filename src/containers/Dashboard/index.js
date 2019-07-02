@@ -200,7 +200,7 @@ function Dashboard(props) {
                 alt="hamburger menu"
                 style={{ width: "25px", height: "25px", marginRight: "5px" }}
               />{" "}
-              JetLogr
+              {!small && "JetLogr"}
             </Link>
           </Typography>
           <Link
