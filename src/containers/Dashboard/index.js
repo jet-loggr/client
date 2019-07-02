@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -16,6 +16,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import Modal from "@material-ui/core/Modal";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { mainListItems, secondaryListItems } from "../../components/ListItems";
 import { Route, Switch, Link } from "react-router-dom";
@@ -132,9 +133,12 @@ const useStyles = makeStyles(theme => ({
 
 function Dashboard(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const theme = useTheme();
+  let small = useMediaQuery(theme.breakpoints.down("sm"));
+  const [open, setOpen] = React.useState(false); // load closed
   const handleDrawerOpen = () => {
     setOpen(true);
+    small = !small;
   };
   const handleDrawerClose = () => {
     setOpen(false);
@@ -150,6 +154,7 @@ function Dashboard(props) {
     setOpenModal(true);
   };
 
+  console.log(small);
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -169,9 +174,9 @@ function Dashboard(props) {
             )}
           >
             <img
-              src={require("./hamburger-light.svg")}
+              src={require("./bars-light.svg")}
               alt="hamburger menu"
-              style={{ width: "35px", height: "35px" }}
+              style={{ width: "25px", height: "25px" }}
             />
           </IconButton>
           <Typography
@@ -239,6 +244,8 @@ function Dashboard(props) {
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
         }}
         open={open}
+        // if 600px or less && menu closed then remove sidenav
+        style={small && !open ? { display: "none" } : null}
       >
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
@@ -250,7 +257,7 @@ function Dashboard(props) {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List onClick={handleDrawerClose}>{mainListItems}</List>
         <Divider />
         {/* <List>{secondaryListItems}</List> */}
       </Drawer>
