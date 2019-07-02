@@ -10,13 +10,13 @@ const LandingPage = ({ auth }) => {
   };
 
   return (
-    <>
+    <div className="landing-container">
       <LandingNav login={login} />
       <div>
         <Route exact path="/" render={props => <LandingHome {...props} />} />
         <Route path="/about-us" render={props => <LandingAbout {...props} />} />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -13,10 +13,10 @@ import "./styles/App.scss";
 const outerTheme = createMuiTheme({
   palette: {
     primary: {
-      main: "#35baf6"
+      main: "#d9d9d9"
     },
     secondary: {
-      main: "#2196f3"
+      main: "#345473"
     }
   }
 });

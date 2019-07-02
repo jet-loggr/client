@@ -2,7 +2,6 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   background-color: $background-color;
-  font-family: $font-stack;
 }
 
 *,
@@ -23,6 +22,7 @@ h3,
 h4,
 h5 {
   font-size: 2rem;
+  font-family: $font-heading;
 }
 
 img {
@@ -33,4 +33,5 @@ img {
 p {
   line-height: 1.25;
   margin: 2rem 0;
+  font-family: $font-stack;
 }

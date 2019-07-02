@@ -5,17 +5,17 @@ const index = ({ login }) => {
     login();
   };
   return (
-    <div>
+    <div className="nav-container">
       <div className="logo-container">
-        <img src="" alt="" />
-        <h1>Jet-Loggr</h1>
+        <img src={require("./plane-departure-solid.svg")} alt="" />
+        <h1>Jet Logr</h1>
       </div>
       <div className="menu">
         <h3>Features</h3>
         <h3>About</h3>
         <h3>Careers</h3>
+        <button onClick={submitHandler}>Login</button>
       </div>
-      <button onClick={submitHandler}>Login</button>
     </div>
   );
 };
