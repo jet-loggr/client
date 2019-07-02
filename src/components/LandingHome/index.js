@@ -6,7 +6,7 @@ import "./landingpage.scss";
 import heroImg from "./hero_img.png";
 import arrow from "./arrow.svg";
 
-const index = () => {
+const index = props => {
   return (
     <div className="landing-page-container">
       <img src={heroImg} alt="plane" className="hero-image" />
@@ -17,8 +17,8 @@ const index = () => {
         </h2>
         <p className="sub-caption">
           We know how crucial and important it is for you to be able to quickly
-          log and keep track of your flight hours, aircraft, passengers, and
-          more. So we’ve made it easy!
+          log and keep track of your flight hours, aircraft, and more. So we’ve
+          made it easy!
         </p>
       </div>
       <div className="CTA">
@@ -26,11 +26,9 @@ const index = () => {
           <h2>Sign up today and start logging!</h2>
           <img src={arrow} className="arrow" alt="arrow" />
         </div>
-        <Link to="/login" className="get-started">
-          <div>
-            <h1>Get started</h1>
-          </div>
-        </Link>
+        <div className="get-started" onClick={() => props.login()}>
+          <h1>Get started</h1>
+        </div>
       </div>
     </div>
   );
