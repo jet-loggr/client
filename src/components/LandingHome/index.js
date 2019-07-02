@@ -17,8 +17,8 @@ const index = props => {
         </h2>
         <p className="sub-caption">
           We know how crucial and important it is for you to be able to quickly
-          log and keep track of your flight hours, aircraft, passengers, and
-          more. So we’ve made it easy!
+          log and keep track of your flight hours, aircraft, and more. So we’ve
+          made it easy!
         </p>
       </div>
       <div className="CTA">
