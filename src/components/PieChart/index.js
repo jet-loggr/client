@@ -17,6 +17,9 @@ const FrequentAircraftChart = props => {
       .catch(err => console.error(err));
   }, []);
 
+  if (pieChartProps.length === 0) {
+    return <div className="pie-message">No aircrafts data available</div>;
+  }
   return <PieChart legend={false} data={pieChartProps} />;
 };
 
