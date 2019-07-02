@@ -4,6 +4,10 @@ import axios from "axios";
 import MaterialDatatable from "material-datatable";
 import DetailsButton from "./DetailsButton";
 import FlightDetails from "./FlightDetails";
+import Slide from "@material-ui/core/Slide";
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 const columns = [
   { name: "Date", field: "date" },
   { name: "Flight No.", field: "flight_number" },
@@ -23,7 +27,7 @@ const LogBook = props => {
     axios
       .get(`/api/flights/${id}`)
       .then(res => {
-        setSingleFlight(res.data);
+        setSingleFlight(res.data[0]);
         setOpen(true);
       })
       .catch(err => console.error(err));
@@ -61,10 +65,12 @@ const LogBook = props => {
         options={options}
       />
       <FlightDetails
+        fullScreen
         open={open}
         handleClose={() => setOpen(false)}
         handleClickOpen={() => setOpen(true)}
         flight={singleFlight}
+        TransitionComponent={Transition}
       />
     </React.Fragment>
   );
