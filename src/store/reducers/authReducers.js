@@ -21,6 +21,7 @@ export default function authReducer(state = initialState, action) {
       };
 
     case GET_USER_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         currentUser: action.payload,

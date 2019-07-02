@@ -25,6 +25,7 @@ import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
+import Profile from '../../components/Profile';
 
 function MadeWithLove() {
   return (
@@ -280,6 +281,7 @@ function Dashboard(props) {
           /> */}
             {/* <Route path="/dashboard/ac-form" component={} /> */}
             <Route path="/dashboard/flight-form" component={FlightForm} />
+            <Route path="/dashboard/profile" component={Profile} />
             <Route
               path="/dashboard/*"
               render={props => <ErrorPage {...props} />}
