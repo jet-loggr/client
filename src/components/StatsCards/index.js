@@ -91,8 +91,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalflightcount ? statsCards.totalflightcount : 0}{" "}
-            Flights
+            {statsCards.totalflightcount || 0} Flights
           </span>
         </div>
       </Paper>
@@ -106,7 +105,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalduration ? statsCards.totalduration : 0} Hrs
+            {statsCards.totalduration || 0} Hrs
           </span>
         </div>
       </Paper>
@@ -121,14 +120,10 @@ const StatsCards = () => {
           </div>
           <div className={classes.landings}>
             <span className={classes.cardTextLandings}>
-              {statsCards.totaldaylandings ? statsCards.totaldaylandings : 0}{" "}
-              Day{" "}
+            {`${statsCards.totalnightlandings || 0} Day `}
             </span>
             <span className={classes.cardTextLandings}>
-              {statsCards.totalnightlandings
-                ? statsCards.totalnightlandings
-                : 0}{" "}
-              Night{" "}
+              {`${statsCards.totalnightlandings || 0} Night `}
             </span>
           </div>
         </div>
@@ -143,8 +138,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalpendingcount ? statsCards.totalpendingcount : 0}{" "}
-            Pending
+            {statsCards.totalpendingcount || 0} Pending
           </span>
         </div>
       </Paper>
