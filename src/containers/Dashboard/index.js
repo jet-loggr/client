@@ -5,6 +5,7 @@ import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import SideNavigation from "../../components/SideNavigation";
 import FlightForm from "../../components/FlightForm";
+import FlightDetails from "../LogBook/FlightDetails";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
 
 class Dashboard extends React.Component {
@@ -15,14 +16,15 @@ class Dashboard extends React.Component {
         <Switch>
           <Route exact path="/dashboard/" component={DashboardHome} />
           <Route
+            exact
             path="/dashboard/logbook"
             render={props => <LogBook {...props} />}
           />
-          {/* <Route
-            path="/dashboard/enhanced-logbook"
-            render={props => <EnhancedTable {...props} />}
-          /> */}
-          {/* <Route path="/dashboard/ac-form" component={} /> */}
+          <Route
+            exact
+            path="/dashboard/logbook/:id"
+            render={props => <FlightDetails {...props} />}
+          />
           <Route path="/dashboard/flight-form" component={FlightForm} />
           <Route
             path="/dashboard/*"
