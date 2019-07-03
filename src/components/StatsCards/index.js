@@ -42,14 +42,14 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.5
   },
   cardText: {
-    fontSize: "1.2rem"
+    fontSize: "1rem"
   },
   landings: {
     display: "flex",
     flexDirection: "column"
   },
   cardTextLandings: {
-    fontSize: "1.2rem"
+    fontSize: "1rem"
   }
 }));
 
