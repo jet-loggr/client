@@ -5,6 +5,7 @@ import MaterialDatatable from "material-datatable";
 import FlightDetails from "./FlightDetails";
 import Slide from "@material-ui/core/Slide";
 import ReactToPrint from "react-to-print";
+import Button from "@material-ui/core/Button";
 
 import DeleteFlightConfirmation from "./DeleteFlightConfirmation";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -179,19 +180,31 @@ const LogBook = () => {
   return (
     <>
       <ReactToPrint
-        trigger={() => <button>PRINT</button>}
+        trigger={() => (
+          <Button variant="contained" color="primary">
+            PRINT
+          </Button>
+        )}
         content={() => printRef.current}
       />
       <div className="logbook__print-area" ref={printRef}>
         <div className="logbook__print-area__container">
-          <h1 className="logbook__print-area__container__heading">{user.name && `${user.name}'s logbook`}</h1>
+          <h1 className="logbook__print-area__container__heading">
+            {user.name && `${user.name}'s logbook`}
+          </h1>
           <MaterialDatatable
             title={"Flight Log Book"}
             data={flights}
             columns={columns}
             options={options}
           />
-          <img className="logbook__print-area__container__signature" src={user.signature} />
+          <img
+            className="logbook__print-area__container__signature"
+            src={user.signature}
+          />
+          <h6 className="logbook__print-area__container__signature">
+            {user.name} {new Date().toISOString().slice(0, 10)}
+          </h6>
         </div>
       </div>
       <FlightDetails

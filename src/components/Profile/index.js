@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import SignatureBox from "../SignatureBox";
 import Palette from "@material-ui/icons/Palette";
 import People from "@material-ui/icons/People";
+import TextField from "@material-ui/core/TextField";
+import { toast } from "react-toastify";
 
 import GridContainer from "../Grid/GridContainer";
 import GridItem from "../Grid/GridItem";
@@ -67,6 +69,22 @@ function Index(props) {
     setShowSignature(!showSignature);
   };
 
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const updateProfile = e => {
+    e.preventDefault();
+    axios
+      .put("/api/users", user)
+      .then(res => {
+        toast.info("Profile updated successfully");
+        axios.get("/api/users").then(res => setUser(res.data));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
   const imageClasses = classNames(
     props.classes.imgRaised,
     props.classes.imgRoundedCircle,
@@ -156,6 +174,28 @@ function Index(props) {
                 tabContent: (
                   <div className={classes.signatureContainer}>
                     <h1>Edit Profile</h1>
+                    <form
+                      onSubmit={updateProfile}
+                      className={classes.signatureContainer}
+                    >
+                      <TextField
+                        id="standard-name"
+                        label="Name"
+                        className={classes.textField}
+                        value={user.name}
+                        onChange={handleChange}
+                        margin="normal"
+                        name="name"
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        onClick={updateProfile}
+                      >
+                        Update Profile
+                      </Button>
+                    </form>
                   </div>
                 )
               }

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SignatureCanvas from "react-signature-canvas";
+import { toast } from "react-toastify";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 
@@ -21,6 +22,8 @@ const Signature = props => {
         signature: sigCanvas.current.getTrimmedCanvas().toDataURL("image/png")
       })
       .then(res => {
+        toast.info("Signature updated successfully");
+
         axios.get("/api/users").then(res => {
           props.setUser(res.data);
           props.setShowSignature(false);
