@@ -187,6 +187,15 @@ function Index(props) {
                         margin="normal"
                         name="name"
                       />
+                      <TextField
+                        id="standard-name"
+                        label="Username"
+                        className={classes.textField}
+                        value={user.nickname}
+                        onChange={handleChange}
+                        margin="normal"
+                        name="nickname"
+                      />
                       <Button
                         variant="contained"
                         color="primary"
