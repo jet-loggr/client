@@ -46,7 +46,7 @@ export const mainListItems = (
             style={{ width: "25px", height: "25px" }}
           />
         </ListItemIcon>
-        <ListItemText primary="Profile" />
+        <ListItemText primary="Profile Settings" />
       </ListItem>
     </NavLink>
     {/* <NavLink

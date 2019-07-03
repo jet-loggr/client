@@ -179,19 +179,21 @@ const LogBook = () => {
 
   return (
     <>
-      <ReactToPrint
-        trigger={() => (
-          <Button variant="contained" color="primary">
-            PRINT
-          </Button>
-        )}
-        content={() => printRef.current}
-      />
       <div className="logbook__print-area" ref={printRef}>
         <div className="logbook__print-area__container">
-          <h1 className="logbook__print-area__container__heading">
-            {user.name && `${user.name}'s logbook`}
-          </h1>
+          <div className="logbook-header-printer-contaner">
+            <h1 className="logbook__print-area__container__heading">
+              {user.name && `${user.name}'s logbook`}
+            </h1>
+            <ReactToPrint
+              trigger={() => (
+                <Button variant="contained" color="primary">
+                  PRINT
+                </Button>
+              )}
+              content={() => printRef.current}
+            />
+          </div>
           <MaterialDatatable
             title={"Flight Log Book"}
             data={flights}
