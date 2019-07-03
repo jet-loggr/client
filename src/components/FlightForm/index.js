@@ -158,6 +158,7 @@ function getStepContent(
                   name="ident"
                 />
                 <TextField
+                  type="number"
                   id="engine_count"
                   label="Engine Count"
                   className={classes.textField}
@@ -175,17 +176,6 @@ function getStepContent(
                   margin="normal"
                   name="engine_type"
                 />
-                {/* <TextField
-                  id="remarks"
-                  label="Remarks"
-                  className={classes.textField}
-                  value={addAircraft.remarks}
-                  onChange={addAircraftHandleChanges}
-                  margin="normal"
-                  name="remarks"
-                  multiline
-                  rows="4"
-                /> */}
               </div>
               <Button
                 variant="contained"
