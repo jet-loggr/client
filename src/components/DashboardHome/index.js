@@ -31,7 +31,9 @@ function Index() {
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
-            <span style={{ marginBottom: "20px" }}>Past Week Flights</span>
+            <span style={{ marginBottom: "20px" }}>
+              Your Flight Hours in the Past Week
+            </span>
             <LineGraph />
           </Paper>
         </Grid>
