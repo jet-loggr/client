@@ -28,7 +28,8 @@ const LogBook = () => {
     onRowClick: (flight, index) => {
       viewDetails(flight.id);
     },
-    rowCursorHand: true
+    rowCursorHand: true,
+    print: false
   };
   const viewDetails = id => {
     axios
