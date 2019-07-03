@@ -18,16 +18,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
       .catch(err => console.error(err));
   }, []);
 
-  console.log(lineChartProps)
-
-  if (
-    !lineChartProps ||
-    !Object.keys(lineChartProps).some(key => lineChartProps[key])
-  ) {
-    return <div className="pie-message">No flight data available</div>;
-  }
-
-  return (
+  return lineChartProps && Object.keys(lineChartProps).some(key => lineChartProps[key]) ? (
     <LineChart
       data={lineChartProps}
       title="Your Flight Hours in the Past Week"
@@ -39,6 +30,8 @@ const DailyFlightCountInCurrentWeekChart = props => {
         }
       }}
     />
+  ) : (
+    <div className="pie-message">No flight data available</div>
   );
 };
 
