@@ -31,6 +31,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
       {...props.options}
       data={lineChartProps}
       suffix=" hour(s)"
+      download={"flight-hours-chart"}
     />
   );
 };
