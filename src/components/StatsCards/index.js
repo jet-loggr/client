@@ -70,8 +70,6 @@ const StatsCards = () => {
       .catch(error => console.error(error));
   }, []);
 
-  console.log(statsCards.totaldaylandings);
-
   return (
     <div className={classes.cardContainer}>
       <Paper className={fixedHeightPaper}>
@@ -84,7 +82,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalflightcount || 0} Total Flights
+            {statsCards.totalflightcount || 0} Total Flight(s)
           </span>
         </div>
       </Paper>
@@ -98,7 +96,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalduration || 0} Total Hours Flying
+            {statsCards.totalduration || 0} Total Hour(s) Flown
           </span>
         </div>
       </Paper>
@@ -113,10 +111,10 @@ const StatsCards = () => {
           </div>
           <div className={classes.landings}>
             <span className={classes.cardTextLandings}>
-              {`${statsCards.totalnightlandings || 0} Day Landings`}
+              {`${statsCards.totalnightlandings || 0} Day Landing(s)`}
             </span>
             <span className={classes.cardTextLandings}>
-              {`${statsCards.totalnightlandings || 0} Night Landings`}
+              {`${statsCards.totalnightlandings || 0} Night Landing(s)`}
             </span>
           </div>
         </div>
@@ -131,7 +129,7 @@ const StatsCards = () => {
             />
           </div>
           <span className={classes.cardText}>
-            {statsCards.totalpendingcount || 0} Pending Flights
+            {statsCards.totalpendingcount || 0} Pending Flight(s)
           </span>
         </div>
       </Paper>

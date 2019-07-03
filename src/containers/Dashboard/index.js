@@ -152,7 +152,6 @@ function Dashboard(props) {
     setOpenModal(true);
   };
 
-  console.log(small);
   return (
     <div className={classes.root}>
       <CssBaseline />

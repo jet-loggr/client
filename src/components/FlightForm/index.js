@@ -228,7 +228,6 @@ function getStepContent(
               name="date"
             />
             <div>
-              {" "}
               <TextField
                 id="route_start"
                 className={classes.textField}
@@ -248,7 +247,6 @@ function getStepContent(
                 label="Route End"
               />
             </div>
-
             <FormControlLabel
               control={
                 <Checkbox
@@ -288,7 +286,6 @@ function getStepContent(
               margin="normal"
               name="legs"
             />
-
             <TextField
               id="day_landings"
               label="day_landings"
@@ -299,7 +296,6 @@ function getStepContent(
               margin="normal"
               name="day_landings"
             />
-
             <TextField
               id="night_landings"
               label="night_landings"
@@ -310,7 +306,6 @@ function getStepContent(
               margin="normal"
               name="night_landings"
             />
-
             <TextField
               id="duration"
               label="Duration in hours"
@@ -321,18 +316,6 @@ function getStepContent(
               margin="normal"
               name="duration"
             />
-            {/* <TextField
-              id="remarks"
-              label="Remarks"
-              className={classes.textField}
-              value={formState.remarks}
-              onChange={handleChange}
-              margin="normal"
-              name="remarks"
-              multiline
-              rows="4"
-            /> */}
-
             <FormControlLabel
               control={
                 <Checkbox
@@ -352,9 +335,6 @@ function getStepContent(
       return (
         <>
           <FormControl>
-            {/*
-    duty_time: ""
-             */}
             <TextField
               id="trip_number"
               label="trip_number"
@@ -375,7 +355,6 @@ function getStepContent(
               margin="normal"
               name="duty_on"
             />
-
             <label htmlFor="duty_off">Duty Off</label>
             <TextField
               id="duty_off"
@@ -396,7 +375,6 @@ function getStepContent(
               margin="normal"
               name="duty_time"
             />
-
             <TextField
               id="hotel"
               className={classes.textField}
@@ -406,7 +384,6 @@ function getStepContent(
               name="hotel"
               label="Hotel"
             />
-
             <TextField
               id="remarks"
               label="Remarks"
