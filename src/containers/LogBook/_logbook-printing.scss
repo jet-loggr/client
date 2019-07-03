@@ -1,3 +1,9 @@
+.logbook-print-btn {
+  @media print {
+    display: none;
+  }
+}
+
 .logbook__print-area {
   &__container {
     @media print {
