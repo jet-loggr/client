@@ -187,9 +187,11 @@ const LogBook = () => {
             </h1>
             <ReactToPrint
               trigger={() => (
-                <Button variant="contained" color="primary">
-                  PRINT
-                </Button>
+                <div className="logbook-print-btn">
+                  <Button variant="contained" color="primary">
+                    PRINT
+                  </Button>
+                </div>
               )}
               content={() => printRef.current}
             />
