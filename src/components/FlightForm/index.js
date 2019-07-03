@@ -174,7 +174,7 @@ function getStepContent(
                   margin="normal"
                   name="engine_type"
                 />
-                <TextField
+                {/* <TextField
                   id="remarks"
                   label="Remarks"
                   className={classes.textField}
@@ -184,7 +184,7 @@ function getStepContent(
                   name="remarks"
                   multiline
                   rows="4"
-                />
+                /> */}
               </div>
               <Button
                 variant="contained"
