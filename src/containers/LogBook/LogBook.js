@@ -203,6 +203,7 @@ const LogBook = () => {
           <img
             className="logbook__print-area__container__signature"
             src={user.signature}
+            alt={`${user.name}'s signature`}
           />
           <h6 className="logbook__print-area__container__signature">
             {user.name} {new Date().toISOString().slice(0, 10)}
