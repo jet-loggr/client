@@ -96,11 +96,6 @@ function Index(props) {
             color="primary"
             tabs={[
               {
-                tabButton: "Edit Profile",
-                tabIcon: Palette,
-                tabContent: <h1>Edit Profile</h1>
-              },
-              {
                 tabButton: "Signature",
                 tabIcon: People,
                 tabContent: (
@@ -153,6 +148,15 @@ function Index(props) {
                       </div>
                     )}
                   </>
+                )
+              },
+              {
+                tabButton: "Edit Profile",
+                tabIcon: Palette,
+                tabContent: (
+                  <div className={classes.signatureContainer}>
+                    <h1>Edit Profile</h1>
+                  </div>
                 )
               }
             ]}
