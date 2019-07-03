@@ -70,8 +70,6 @@ const StatsCards = () => {
       .catch(error => console.error(error));
   }, []);
 
-  console.log(statsCards.totaldaylandings);
-
   return (
     <div className={classes.cardContainer}>
       <Paper className={fixedHeightPaper}>
