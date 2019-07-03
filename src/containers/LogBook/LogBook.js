@@ -183,14 +183,16 @@ const LogBook = () => {
         content={() => printRef.current}
       />
       <div className="logbook__print-area" ref={printRef}>
-        <h1>{user.name}'s logbook</h1>
-        <MaterialDatatable
-          title={"Flight Log Book"}
-          data={flights}
-          columns={columns}
-          options={options}
-        />
-        <img className="logbook__print-area__signature" src={user.signature} />
+        <div className="logbook__print-area__container">
+          <h1 className="logbook__print-area__container__heading">{user.name && `${user.name}'s logbook`}</h1>
+          <MaterialDatatable
+            title={"Flight Log Book"}
+            data={flights}
+            columns={columns}
+            options={options}
+          />
+          <img className="logbook__print-area__container__signature" src={user.signature} />
+        </div>
       </div>
       <FlightDetails
         fullScreen
