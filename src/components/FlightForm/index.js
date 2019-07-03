@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -570,6 +571,7 @@ export default function VerticalLinearStepper(props) {
           hotel: "",
           duty_time: undefined
         });
+        toast.info("Flight added successfully.");
         props.history.push("/dashboard/logbook");
       })
       .catch(err => {
