@@ -15,9 +15,9 @@ const index = props => {
           The best app for pilots to log and track their hours.
         </h2>
         <p className="sub-caption">
-          We know how crucial and important it is for you to be able to quickly
-          log and keep track of your flight hours, aircraft, and more. So we’ve
-          made it easy!
+          "This app is amazing! It is better than most log books I have used
+          before. Especially having the option to print a signed copy. I would
+          100% recommend to all my American Airline friends!" - Real Pilot
         </p>
       </div>
       <div className="CTA">
