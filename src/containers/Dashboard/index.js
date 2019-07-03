@@ -22,6 +22,7 @@ import LogBook from "../LogBook/LogBook";
 import DashboardHome from "../../components/DashboardHome";
 import FlightForm from "../../components/FlightForm";
 import requiresAuth from "../RequiresAuth/RequiresAuth";
+import Profile from "../../components/Profile";
 
 function MadeWithLove() {
   return (
@@ -40,7 +41,8 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    width: "100vw"
+    width: "100vw",
+    backgroundColor: "#FAFAFA"
   },
   toolbar: {
     paddingRight: 24 // keep right padding when drawer closed
@@ -100,7 +102,6 @@ const useStyles = makeStyles(theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: "100vh",
     width: "100%"
   },
   container: {
@@ -151,7 +152,6 @@ function Dashboard(props) {
     setOpenModal(true);
   };
 
-  console.log(small);
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -183,7 +183,23 @@ function Dashboard(props) {
             noWrap
             className={classes.title}
           >
-            JetLogr
+            <Link
+              to="/dashboard"
+              style={{
+                textDecoration: "none",
+                color: "unset",
+                display: "flex",
+                alignItems: "center"
+              }}
+              onClick={handleDrawerClose}
+            >
+              <img
+                src={require("../../assets/planelogo.svg")}
+                alt="hamburger menu"
+                style={{ width: "25px", height: "25px", marginRight: "5px" }}
+              />{" "}
+              {!small && "JetLogr"}
+            </Link>
           </Typography>
           <Link
             to="/dashboard/flight-form"
@@ -277,6 +293,7 @@ function Dashboard(props) {
           /> */}
             {/* <Route path="/dashboard/ac-form" component={} /> */}
             <Route path="/dashboard/flight-form" component={FlightForm} />
+            <Route path="/dashboard/profile" component={Profile} />
             <Route
               path="/dashboard/*"
               render={props => <ErrorPage {...props} />}

@@ -9,18 +9,29 @@ const DailyFlightCountInCurrentWeekChart = props => {
   React.useEffect(() => {
     axios
       .get("/api/flights/line-graph")
-      .then(res => setLineChartProps(res.data))
-      .catch(err => {
-        console.error(err);
-      });
+      .then(res => 
+        setLineChartProps({
+          "": null,
+          ...res.data,
+          " ": null
+        }))
+      .catch(err => console.error(err));
   }, []);
 
-  return (
+  return lineChartProps && Object.keys(lineChartProps).some(key => lineChartProps[key]) ? (
     <LineChart
-      {...props.options}
       data={lineChartProps}
-      messages={{ empty: "No flight data available so far for this week." }}
+      title="Your Flight Hours in the Past Week"
+      suffix=" hour(s)"
+      download={"flight-hours-chart"}
+      library={{
+        title: {
+          lineHeight: 2.5
+        }
+      }}
     />
+  ) : (
+    <div className="pie-message">No flight data available</div>
   );
 };
 

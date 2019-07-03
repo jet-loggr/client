@@ -12,6 +12,8 @@
 @import "../containers/Dashboard/dashboard";
 @import "../components/LandingNav/landing-nav";
 @import "../containers/LandingPage/landing-page";
+@import "../components/PieChart/piechart";
+@import "../containers/LogBook/logbook-printing";
 
 .app {
   display: flex;

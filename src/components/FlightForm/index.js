@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -16,9 +17,14 @@ import TextField from "@material-ui/core/TextField";
 import { Checkbox } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+import "./flight.css";
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: "90%"
+  },
+  select: {
+    fontSize: "1.2rem"
   },
   button: {
     marginTop: theme.spacing(1),
@@ -82,6 +88,7 @@ function getStepContent(
           <FormControl>
             <InputLabel htmlFor="aircraft-simple">Aircraft</InputLabel>
             <Select
+              className={classes.select}
               value={formState.aircraft_id}
               onChange={handleChange}
               inputProps={{
@@ -96,7 +103,12 @@ function getStepContent(
                 } ${item.ident}`}</MenuItem>
               ))}
             </Select>
-            <Button variant="contained" color="primary" onClick={handleOpen}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleOpen}
+              style={{ margin: "25px 0" }}
+            >
               Add new aircraft
             </Button>
           </FormControl>
@@ -146,6 +158,7 @@ function getStepContent(
                   name="ident"
                 />
                 <TextField
+                  type="number"
                   id="engine_count"
                   label="Engine Count"
                   className={classes.textField}
@@ -163,17 +176,6 @@ function getStepContent(
                   margin="normal"
                   name="engine_type"
                 />
-                <TextField
-                  id="remarks"
-                  label="Remarks"
-                  className={classes.textField}
-                  value={addAircraft.remarks}
-                  onChange={addAircraftHandleChanges}
-                  margin="normal"
-                  name="remarks"
-                  multiline
-                  rows="4"
-                />
               </div>
               <Button
                 variant="contained"
@@ -181,6 +183,13 @@ function getStepContent(
                 onClick={addNewAircraft}
               >
                 Add new aircraft
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClose}
+              >
+                Cancel
               </Button>
             </div>
           </Modal>
@@ -210,7 +219,6 @@ function getStepContent(
               name="date"
             />
             <div>
-              {" "}
               <TextField
                 id="route_start"
                 className={classes.textField}
@@ -230,7 +238,6 @@ function getStepContent(
                 label="Route End"
               />
             </div>
-
             <FormControlLabel
               control={
                 <Checkbox
@@ -270,7 +277,6 @@ function getStepContent(
               margin="normal"
               name="legs"
             />
-
             <TextField
               id="day_landings"
               label="day_landings"
@@ -281,7 +287,6 @@ function getStepContent(
               margin="normal"
               name="day_landings"
             />
-
             <TextField
               id="night_landings"
               label="night_landings"
@@ -292,7 +297,6 @@ function getStepContent(
               margin="normal"
               name="night_landings"
             />
-
             <TextField
               id="duration"
               label="Duration in hours"
@@ -303,18 +307,6 @@ function getStepContent(
               margin="normal"
               name="duration"
             />
-            <TextField
-              id="remarks"
-              label="Remarks"
-              className={classes.textField}
-              value={formState.remarks}
-              onChange={handleChange}
-              margin="normal"
-              name="remarks"
-              multiline
-              rows="4"
-            />
-
             <FormControlLabel
               control={
                 <Checkbox
@@ -334,9 +326,6 @@ function getStepContent(
       return (
         <>
           <FormControl>
-            {/*
-    duty_time: ""
-             */}
             <TextField
               id="trip_number"
               label="trip_number"
@@ -357,7 +346,6 @@ function getStepContent(
               margin="normal"
               name="duty_on"
             />
-
             <label htmlFor="duty_off">Duty Off</label>
             <TextField
               id="duty_off"
@@ -378,7 +366,6 @@ function getStepContent(
               margin="normal"
               name="duty_time"
             />
-
             <TextField
               id="hotel"
               className={classes.textField}
@@ -388,7 +375,6 @@ function getStepContent(
               name="hotel"
               label="Hotel"
             />
-
             <TextField
               id="remarks"
               label="Remarks"
@@ -517,6 +503,7 @@ export default function VerticalLinearStepper(props) {
         });
       })
       .catch(err => {
+        toast.error("Aircraft Already Exists");
         console.error(err);
       });
   };
@@ -552,6 +539,7 @@ export default function VerticalLinearStepper(props) {
           hotel: "",
           duty_time: undefined
         });
+        toast.info("Flight added successfully.");
         props.history.push("/dashboard/logbook");
       })
       .catch(err => {
@@ -561,7 +549,11 @@ export default function VerticalLinearStepper(props) {
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper
+        className="stepContent"
+        activeStep={activeStep}
+        orientation="vertical"
+      >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

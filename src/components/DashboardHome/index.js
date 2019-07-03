@@ -31,7 +31,6 @@ function Index() {
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
-            <span style={{ marginBottom: "20px" }}>Past Week Flights</span>
             <LineGraph />
           </Paper>
         </Grid>
@@ -43,9 +42,9 @@ function Index() {
           </Paper>
         </Grid>
         {/* Recent Orders */}
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Paper className={classes.paper}>AND SOMETHING ELSE</Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

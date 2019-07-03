@@ -1,0 +1,57 @@
+.logbook-print-btn {
+  @media print {
+    display: none;
+  }
+}
+
+.logbook__print-area {
+  &__container {
+    @media print {
+      padding: 20px 30px;
+    }
+
+    &__heading {
+      @media print {
+        margin-bottom: 15px;
+      }
+    }
+
+    .MaterialDatatableToolbar-titleText-129 {
+      @media print {
+        text-align: center;
+      }
+    }
+
+    .MaterialDatatableToolbar-actions-127 {
+      @media print {
+        display: none;
+      }
+    }
+
+    table {
+      tfoot {
+        @media print {
+          display: none;
+        }
+      }
+    }
+
+    &__signature {
+      display: none;
+      width: 200px;
+
+      @media print {
+        display: block;
+        position: fixed;
+        right: 5%;
+        bottom: 50px;
+      }
+    }
+  }
+}
+
+.logbook-header-printer-contaner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

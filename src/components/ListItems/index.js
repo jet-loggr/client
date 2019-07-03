@@ -41,15 +41,15 @@ export const mainListItems = (
       <ListItem button>
         <ListItemIcon>
           <img
-            src={require("../../assets/user-light.svg")}
+            src={require("../../assets/user-cog-light.svg")}
             alt="logbook"
             style={{ width: "25px", height: "25px" }}
           />
         </ListItemIcon>
-        <ListItemText primary="Profile" />
+        <ListItemText primary="Profile Settings" />
       </ListItem>
     </NavLink>
-    <NavLink
+    {/* <NavLink
       to="/dashboard/settings"
       style={{ textDecoration: "none", color: "unset" }}
     >
@@ -63,7 +63,7 @@ export const mainListItems = (
         </ListItemIcon>
         <ListItemText primary="Settings" />
       </ListItem>
-    </NavLink>
+    </NavLink> */}
   </div>
 );
 
