@@ -4,6 +4,7 @@ import axios from "axios";
 import MaterialDatatable from "material-datatable";
 import FlightDetails from "./FlightDetails";
 import Slide from "@material-ui/core/Slide";
+import ReactToPrint from "react-to-print";
 
 import DeleteFlightConfirmation from "./DeleteFlightConfirmation";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -31,6 +32,7 @@ const LogBook = () => {
     rowCursorHand: true,
     print: false
   };
+
   const viewDetails = id => {
     axios
       .get(`/api/flights/${id}`)
@@ -41,6 +43,7 @@ const LogBook = () => {
       })
       .catch(err => console.error(err));
   };
+
   const getReq = () => {
     axios
       .get("/api/flights")
@@ -57,6 +60,7 @@ const LogBook = () => {
       })
       .catch(err => console.error(err));
   };
+
   const deleteFlight = id => {
     axios
       .delete(`/api/flights/${id}`)
@@ -66,6 +70,7 @@ const LogBook = () => {
       })
       .catch(err => console.error(err));
   };
+
   const submitFlightUpdate = flightId => {
     const {
       aircraft_id,
@@ -115,6 +120,7 @@ const LogBook = () => {
       })
       .catch(err => console.error(err));
   };
+
   const submitAircraftUpdate = aircraftId => {
     const { ident, make, model } = updatedFlight;
     axios
@@ -130,6 +136,7 @@ const LogBook = () => {
       })
       .catch(err => console.error(err));
   };
+
   const combineUpdates = (flightId, aircraftId) => {
     const { ident, make, model } = updatedFlight;
     submitFlightUpdate(flightId);
@@ -141,27 +148,52 @@ const LogBook = () => {
       submitAircraftUpdate(aircraftId);
     }
   };
+
   const [flights, setFlights] = useState([]);
   const [open, setOpen] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [singleFlight, setSingleFlight] = useState({});
   const [updating, setUpdating] = useState(false);
   const [updatedFlight, setUpdatedFlight] = useState({});
+  const [user, setUser] = useState({});
+
   const handleUpdateChange = e => {
     const { name, value } = e.target;
     setUpdatedFlight({ ...updatedFlight, [name]: value });
   };
+
+  const getUser = () => {
+    axios
+      .get("/api/users")
+      .then(res => setUser(res.data))
+      .catch(err => console.error(err));
+  };
+
   useEffect(() => {
     getReq();
+    getUser();
   }, []);
+
+  const printRef = React.useRef();
+
   return (
-    <React.Fragment>
-      <MaterialDatatable
-        title={"Flight Log Book"}
-        data={flights}
-        columns={columns}
-        options={options}
+    <>
+      <ReactToPrint
+        trigger={() => <button>PRINT</button>}
+        content={() => printRef.current}
       />
+      <div className="logbook__print-area" ref={printRef}>
+        <div className="logbook__print-area__container">
+          <h1 className="logbook__print-area__container__heading">{user.name && `${user.name}'s logbook`}</h1>
+          <MaterialDatatable
+            title={"Flight Log Book"}
+            data={flights}
+            columns={columns}
+            options={options}
+          />
+          <img className="logbook__print-area__container__signature" src={user.signature} />
+        </div>
+      </div>
       <FlightDetails
         fullScreen
         open={open}
@@ -186,7 +218,7 @@ const LogBook = () => {
         deleteFlight={() => deleteFlight(singleFlight.id)}
         flight={singleFlight}
       />
-    </React.Fragment>
+    </>
   );
 };
 
