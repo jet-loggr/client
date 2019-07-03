@@ -74,97 +74,95 @@ function Index(props) {
   );
 
   return (
-    <div>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={props.classes.container}>
-          <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={6}>
-              <div className={props.classes.profile}>
-                <div>
-                  <img
-                    src={user.image_url}
-                    alt="..."
-                    className={imageClasses}
-                  />
-                </div>
-                <div className={classes.name}>
-                  <h3 className={props.classes.title}>{user.name}</h3>
-                  <h6>{user.email}</h6>
-                  <h6>{user.nickname}</h6>
-                </div>
+    <div className={classNames(classes.main, classes.mainRaised)}>
+      <div className={props.classes.container}>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={6}>
+            <div className={props.classes.profile}>
+              <div>
+                <img src={user.image_url} alt="..." className={imageClasses} />
               </div>
-            </GridItem>
-          </GridContainer>
-          <div className={props.classes.profileTabs}>
-            <NavPills
-              alignCenter
-              color="primary"
-              tabs={[
-                {
-                  tabButton: "Edit Profile",
-                  tabIcon: Palette,
-                  tabContent: <h1>Edit Profile</h1>
-                },
-                {
-                  tabButton: "Signature",
-                  tabIcon: People,
-                  tabContent: (
-                    <>
-                      {user.signature ? (
-                        <div className={classes.signatureContainer}>
-                          {showSignature ? (
-                            <div className={classes.signatureContainer}>
-                              <SignatureBox
-                                setUser={setUser}
-                                setShowSignature={setShowSignature}
-                              />
-                            </div>
-                          ) : (
-                            <div className={classes.signatureContainer}>
-                              <img
-                                className={classes.signatureImage}
-                                src={user.signature}
-                                alt="signature"
-                              />
-                            </div>
-                          )}
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.button}
-                            onClick={toggleSignature}
-                          >
-                            {showSignature ? "Cancel" : "Update Signature"}
-                          </Button>
-                        </div>
-                      ) : (
-                        <div className={classes.signatureContainer}>
-                          {showSignature ? (
-                            <div className={classes.signatureContainer}>
-                              <SignatureBox
-                                setUser={setUser}
-                                setShowSignature={setShowSignature}
-                              />
-                            </div>
-                          ) : null}
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.button}
-                            onClick={toggleSignature}
-                          >
-                            Add your signature
-                          </Button>
-                        </div>
-                      )}
-                    </>
-                  )
-                }
-              ]}
-            />
-          </div>
-          <Clearfix />
+              <div className={classes.name}>
+                <h3 className={props.classes.title}>{user.name}</h3>
+                <h6>{user.email}</h6>
+                <h6>{user.nickname}</h6>
+              </div>
+            </div>
+          </GridItem>
+        </GridContainer>
+        <div className={props.classes.profileTabs}>
+          <NavPills
+            alignCenter
+            color="primary"
+            tabs={[
+              {
+                tabButton: "Signature",
+                tabIcon: People,
+                tabContent: (
+                  <>
+                    {user.signature ? (
+                      <div className={classes.signatureContainer}>
+                        {showSignature ? (
+                          <div className={classes.signatureContainer}>
+                            <SignatureBox
+                              setUser={setUser}
+                              setShowSignature={setShowSignature}
+                            />
+                          </div>
+                        ) : (
+                          <div className={classes.signatureContainer}>
+                            <img
+                              className={classes.signatureImage}
+                              src={user.signature}
+                              alt="signature"
+                            />
+                          </div>
+                        )}
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                          onClick={toggleSignature}
+                        >
+                          {showSignature ? "Cancel" : "Update Signature"}
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className={classes.signatureContainer}>
+                        {showSignature ? (
+                          <div className={classes.signatureContainer}>
+                            <SignatureBox
+                              setUser={setUser}
+                              setShowSignature={setShowSignature}
+                            />
+                          </div>
+                        ) : null}
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                          onClick={toggleSignature}
+                        >
+                          Add your signature
+                        </Button>
+                      </div>
+                    )}
+                  </>
+                )
+              },
+              {
+                tabButton: "Edit Profile",
+                tabIcon: Palette,
+                tabContent: (
+                  <div className={classes.signatureContainer}>
+                    <h1>Edit Profile</h1>
+                  </div>
+                )
+              }
+            ]}
+          />
         </div>
+        <Clearfix />
       </div>
     </div>
   );
