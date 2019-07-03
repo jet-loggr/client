@@ -19,11 +19,12 @@
         color: black;
         font-family: "Roboto", sans-serif;
         font-weight: 500;
-      }
+        transition: color 0.2s ease-in-out;
 
-      .links:hover {
-        color: #0077ff;
-        transition: all 0.2s ease-in-out;
+        &:hover {
+          color: #0077ff;
+          transition: all 0.2s ease-in-out;
+        }
       }
 
       .login-btn {
