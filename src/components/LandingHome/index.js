@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./landingpage.scss";
-
 import heroImg from "./hero_img.png";
 import arrow from "./arrow.svg";
 
