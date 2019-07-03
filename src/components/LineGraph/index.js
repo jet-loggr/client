@@ -25,6 +25,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
     <LineChart
       {...props.options}
       data={lineChartProps}
+      suffix=" hour(s)"
     />
   );
 };
