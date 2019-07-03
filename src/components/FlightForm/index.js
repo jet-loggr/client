@@ -15,6 +15,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import { Checkbox } from "@material-ui/core";
+import { toast } from "react-toastify";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./flight.css";
@@ -503,6 +504,7 @@ export default function VerticalLinearStepper(props) {
         });
       })
       .catch(err => {
+        toast.error("Aircraft Already Exists");
         console.error(err);
       });
   };
