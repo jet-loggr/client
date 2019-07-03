@@ -28,10 +28,15 @@ const DailyFlightCountInCurrentWeekChart = props => {
 
   return (
     <LineChart
-      {...props.options}
       data={lineChartProps}
+      title="Your Flight Hours in the Past Week"
       suffix=" hour(s)"
       download={"flight-hours-chart"}
+      library={{
+        title: {
+          lineHeight: 2.5
+        }
+      }}
     />
   );
 };
