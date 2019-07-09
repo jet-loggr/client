@@ -1,3 +1,5 @@
+@import "../../styles/libs/variables";
+
 .landing-page-container {
   position: absolute;
   top: 0;
@@ -8,13 +10,18 @@
     position: absolute;
     right: -10%;
     width: 60%;
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 
   .hero-content {
     width: 50%;
     margin-top: 20%;
     font-family: "Roboto", sans-serif;
-
+    @media (max-width: $mobile) {
+      width: 90%;
+    }
     .title {
       font-weight: 900;
       font-size: 4rem;
@@ -38,12 +45,18 @@
       font-size: 18px;
       line-height: 27px;
       color: #4f5059;
+      @media (max-width: $mobile) {
+        width: 65%;
+        margin: 20px auto;
+      }
     }
-  }
+  } // .hero-content
   .CTA {
     width: 40%;
     display: flex;
-
+    @media (max-width: $mobile) {
+      width: 90%;
+    }
     .content {
       display: flex;
       justify-content: space-evenly;
@@ -63,7 +76,7 @@
       .arrow {
         width: 5%;
       }
-    }
+    } // .content
 
     .get-started {
       position: relative;
@@ -110,9 +123,9 @@
         font-weight: bold;
         font-size: 1rem;
       }
-    }
-  }
-}
+    } // .get-started
+  } // CTA
+} // .landing-page-container
 
 // TABLET RESPONSIVE BREAKPOINTS
 
@@ -182,7 +195,7 @@
         .arrow {
           width: 5%;
         }
-      }
+      } // .content
 
       .get-started {
         background: linear-gradient(299.24deg, #0077ff 0%, #00b2ff 100%);
@@ -207,6 +220,40 @@
         background: linear-gradient(299.24deg, #8c3aff 0%, #6c2efc 100%);
         color: white;
         box-shadow: 0px 5px 10px #8c3aff59;
+      }
+    } // .CTA
+  } // .landing-page-container
+}
+
+@media (max-width: $mobile) {
+  .landing-page-container {
+    width: 100%;
+    .hero-image {
+      display: none;
+    }
+    .hero-content {
+      width: 95%;
+      margin: 65px auto 0px;
+      text-align: center;
+      .sub-caption {
+        width: 65%;
+        margin: 20px auto;
+      }
+    }
+    .CTA {
+      margin: 0 auto;
+      width: 90%;
+      flex-direction: column;
+      .content {
+        width: 100%;
+        text-align: center;
+        .arrow {
+          display: none;
+        }
+      }
+      .get-started {
+        width: 100%;
+        padding: 20px;
       }
     }
   }
