@@ -9,16 +9,18 @@ const DailyFlightCountInCurrentWeekChart = props => {
   React.useEffect(() => {
     axios
       .get("/api/flights/line-graph")
-      .then(res => 
+      .then(res =>
         setLineChartProps({
           "": null,
           ...res.data,
           " ": null
-        }))
+        })
+      )
       .catch(err => console.error(err));
   }, []);
 
-  return lineChartProps && Object.keys(lineChartProps).some(key => lineChartProps[key]) ? (
+  return lineChartProps &&
+    Object.keys(lineChartProps).some(key => lineChartProps[key]) ? (
     <LineChart
       data={lineChartProps}
       title="Your Flight Hours in the Past Week"
@@ -31,7 +33,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
       }}
     />
   ) : (
-    <div className="pie-message">No flight data available</div>
+    <div className="pie-message">No recorded flights in the past week.</div>
   );
 };
 
