@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,6 +10,16 @@ import Auth from "./containers/auth-zero/Auth/Auth.js";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import "./styles/App.scss";
+
+// TOUR STUFF
+import Tour from "reactour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+const tourConfig = [
+  {
+    selector: '[data-tut="reactour__copy"]',
+    content: `Ok, let's start with the name of the Tour that is about to begin.`
+  }
+];
 
 const outerTheme = createMuiTheme({
   palette: {
@@ -32,6 +42,9 @@ const handleAuthentication = ({ location }) => {
 };
 
 function App() {
+  const [isTourOpen, handleTourOpen] = useState(false);
+  const disableBody = target => disableBodyScroll(target);
+  const enableBody = target => enableBodyScroll(target);
   return (
     <div className="App">
       <ThemeProvider theme={outerTheme}>
@@ -62,6 +75,17 @@ function App() {
         position="bottom-right"
         style={{ zIndex: "999999999999", fontSize: "1.2rem" }}
       />
+      <Tour
+        onRequestClose={() => handleTourOpen(false)}
+        steps={tourConfig}
+        isOpen={isTourOpen}
+        maskClassName="mask"
+        className="helper"
+        rounded={5}
+        onAfterOpen={disableBody}
+        onBeforeClose={enableBody}
+      />
+      <button onClick={() => handleTourOpen(true)}>Start Tour</button>
     </div>
   );
 }

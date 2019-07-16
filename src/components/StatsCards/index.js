@@ -72,7 +72,7 @@ const StatsCards = () => {
 
   return (
     <div className={classes.cardContainer}>
-      <Paper className={fixedHeightPaper}>
+      <Paper className={fixedHeightPaper} data-tut="reactour__copy">
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
             <img
