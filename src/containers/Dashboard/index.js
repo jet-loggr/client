@@ -276,7 +276,6 @@ function Dashboard(props) {
         <Divider />
         <List onClick={handleDrawerClose}>{mainListItems}</List>
         <Divider />
-        {/* <List>{secondaryListItems}</List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -287,11 +286,6 @@ function Dashboard(props) {
               path="/dashboard/logbook"
               render={props => <LogBook {...props} />}
             />
-            {/* <Route
-            path="/dashboard/enhanced-logbook"
-            render={props => <EnhancedTable {...props} />}
-          /> */}
-            {/* <Route path="/dashboard/ac-form" component={} /> */}
             <Route path="/dashboard/flight-form" component={FlightForm} />
             <Route path="/dashboard/profile" component={Profile} />
             <Route
