@@ -204,6 +204,7 @@ function Dashboard(props) {
           <Link
             to="/dashboard/flight-form"
             style={{ color: "unset", textDecoration: "none", fontWeight: 800 }}
+            data-tut="reactour__add-flight-btn"
           >
             Add a flight
             <IconButton color="inherit">

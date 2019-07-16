@@ -71,8 +71,8 @@ const StatsCards = () => {
   }, []);
 
   return (
-    <div className={classes.cardContainer}>
-      <Paper className={fixedHeightPaper} data-tut="reactour__copy">
+    <div className={classes.cardContainer} data-tut="reactour__cards">
+      <Paper className={fixedHeightPaper}>
         <div className={classes.cardHolder}>
           <div className={classes.icon}>
             <img

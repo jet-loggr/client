@@ -22,6 +22,7 @@ const DailyFlightCountInCurrentWeekChart = props => {
   return lineChartProps &&
     Object.keys(lineChartProps).some(key => lineChartProps[key]) ? (
     <LineChart
+      data-tut="reactour__line-graph"
       data={lineChartProps}
       title="Your Flight Hours in the Past Week"
       suffix=" hour(s)"
@@ -33,7 +34,9 @@ const DailyFlightCountInCurrentWeekChart = props => {
       }}
     />
   ) : (
-    <div className="pie-message">No recorded flights in the past week.</div>
+    <div data-tut="reactour__line-graph" className="pie-message">
+      No recorded flights in the past week.
+    </div>
   );
 };
 

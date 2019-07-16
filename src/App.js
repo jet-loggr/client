@@ -16,8 +16,16 @@ import Tour from "reactour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 const tourConfig = [
   {
-    selector: '[data-tut="reactour__copy"]',
-    content: `Ok, let's start with the name of the Tour that is about to begin.`
+    selector: '[data-tut="reactour__cards"]',
+    content: `This is the dashboard. Here, you can see a brief overview of the flights you have logged on JetLogr.`
+  },
+  {
+    selector: '[data-tut="reactour__line-graph"]',
+    content: `Here you can view your flights in the past week.`
+  },
+  {
+    selector: '[data-tut="reactour__add-flight-btn"]',
+    content: `Click here to add a new flight to your log book.`
   }
 ];
 
