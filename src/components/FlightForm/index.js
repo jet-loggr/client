@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
@@ -396,10 +396,10 @@ function getStepContent(
 
 export default function VerticalLinearStepper(props) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
-  const [data, setData] = React.useState([]);
-  const [formState, setFormState] = React.useState({
+  const [data, setData] = useState([]);
+  const [formState, setFormState] = useState({
     //step 1 - aircraft -
     aircraft_id: "",
     //step 2 - add flight -
@@ -426,7 +426,7 @@ export default function VerticalLinearStepper(props) {
     duty_time: undefined
   });
 
-  const [addAircraft, setAddAircraft] = React.useState({
+  const [addAircraft, setAddAircraft] = useState({
     make: "",
     model: "",
     ident: "",
@@ -434,9 +434,9 @@ export default function VerticalLinearStepper(props) {
     engine_type: "",
     remarks: ""
   });
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("/api/aircrafts")
       .then(res => {
@@ -548,7 +548,7 @@ export default function VerticalLinearStepper(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-tut="reactour__add-flight-form">
       <Stepper
         className="stepContent"
         activeStep={activeStep}
