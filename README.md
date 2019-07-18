@@ -1,11 +1,11 @@
 # Jet Logr
 An app submission for Lambda School's Summer Hackathon.
 
-This project won 1st place as "most likely to be a start-up"
+## Winner for "Most likely to be a start-up"
 
 ## deployed
 
-jet-loggr.netlify.com
+https://www.jet-loggr.netlify.com
 
 ## Tech Stack
 - ReactJS
