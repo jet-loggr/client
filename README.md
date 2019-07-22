@@ -5,7 +5,7 @@ An app submission for Lambda School's Summer Hackathon.
 
 ## deployed
 
-https://www.jet-loggr.netlify.com
+https://jet-loggr.netlify.com/
 
 ## Tech Stack
 - ReactJS
