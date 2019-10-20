@@ -16,10 +16,8 @@ This repository contains a **yarn.lock** file. Please do not remove this file fr
 To get the client running locally, clone this repo and use the following commands/steps:
 
 1. **cd** into the `root` directory and then into the `client` directory
-2. Use the **yarn** command in the `client` directory to install all required dependencies
-3. Use the **yarn install** command to start the local instance of `React` in your default browser
-4. Use the **yarn test** command to start the `React` testing environment
-5. Use the **yarn lint** command to start the `Eslint` linting environment
+2. Use the **yarn**  or **yarn install**  command in the `client` directory to install all required dependencies
+3. Use the **yarn start** command to start the local instance of `React` in your default browser
 
 #### Environment Variables
 
